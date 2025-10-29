@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- USAR PARA BOTÕES ESTÁTICOS OU CAIXAS DE TEXTO-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- cor de fundo -->
+    <solid android:color="#137ADB"/>
+
+    <!-- cantos arredondados -->
+    <corners android:radius="24dp"/>
+
+    <!-- opcional: borda -->
+    <stroke
+        android:width="2dp"
+        android:color="#1565C0"/>
+
+</shape>

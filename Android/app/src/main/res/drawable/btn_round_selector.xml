@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!-- USAR PARA BOTÕES QUE MUDEM DE ESTADO-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- PRESSIONADO -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#0E5FB0"/>
+            <corners android:radius="24dp"/>
+            <stroke android:width="2dp" android:color="#124F94"/>
+        </shape>
+    </item>
+
+    <!-- DESABILITADO -->
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <!-- mesma cor com transparência (~40%) -->
+            <solid android:color="#66137ADB"/>
+            <corners android:radius="24dp"/>
+            <!-- borda mais fraca -->
+            <stroke android:width="2dp" android:color="#331565C0"/>
+        </shape>
+    </item>
+
+    <!-- NORMAL (reutiliza o btn_round.xml) -->
+    <item android:drawable="@drawable/btn_round"/>
+</selector>
