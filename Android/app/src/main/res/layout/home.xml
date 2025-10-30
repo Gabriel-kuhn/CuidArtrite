@@ -55,9 +55,9 @@
                 app:rowCount="3"
                 app:useDefaultMargins="true">
 
-                <!-- Meu Cronograma -->
+                <!-- Avaliação da dor -->
                 <LinearLayout
-                    android:id="@+id/btnCronograma"
+                    android:id="@+id/btnPainAssessment"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="8dp"
@@ -84,7 +84,7 @@
 
                 <!-- Tecnicas de alívio -->
                 <LinearLayout
-                    android:id="@+id/btnEntregas"
+                    android:id="@+id/btnReliefTechniques"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="8dp"
@@ -111,7 +111,7 @@
 
                 <!-- Agenda -->
                 <LinearLayout
-                    android:id="@+id/btnOrientacoes"
+                    android:id="@+id/btnAgenda"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="8dp"
@@ -138,7 +138,7 @@
 
                 <!-- Conteúdo educativo -->
                 <LinearLayout
-                    android:id="@+id/btnAlertas"
+                    android:id="@+id/btnEducationalContent"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_margin="8dp"
