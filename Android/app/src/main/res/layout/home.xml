@@ -70,19 +70,19 @@
                     <ImageView
                         android:layout_width="56dp"
                         android:layout_height="56dp"
-                        android:src="@drawable/ic_calendar"
+                        android:src="@drawable/ic_media"
                         app:tint="@android:color/white" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        android:text="11"
+                        android:text="@string/avaliacao_da_dor"
                         android:textColor="@android:color/white"
                         android:textSize="14sp" />
                 </LinearLayout>
 
-                <!-- Entregas -->
+                <!-- Tecnicas de alívio -->
                 <LinearLayout
                     android:id="@+id/btnEntregas"
                     android:layout_width="150dp"
@@ -97,19 +97,19 @@
                     <ImageView
                         android:layout_width="56dp"
                         android:layout_height="56dp"
-                        android:src="@drawable/ic_up_load"
+                        android:src="@drawable/ic_stretching"
                         app:tint="@android:color/white" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        android:text="22"
+                        android:text="@string/tecnicas_de_alivio"
                         android:textColor="@android:color/white"
                         android:textSize="14sp" />
                 </LinearLayout>
 
-                <!-- Orientações -->
+                <!-- Agenda -->
                 <LinearLayout
                     android:id="@+id/btnOrientacoes"
                     android:layout_width="150dp"
@@ -124,19 +124,19 @@
                     <ImageView
                         android:layout_width="56dp"
                         android:layout_height="56dp"
-                        android:src="@drawable/ic_add"
+                        android:src="@drawable/ic_calendar"
                         app:tint="@android:color/white" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        android:text="33"
+                        android:text="Agenda"
                         android:textColor="@android:color/white"
                         android:textSize="14sp" />
                 </LinearLayout>
 
-                <!-- Alertas -->
+                <!-- Conteúdo educativo -->
                 <LinearLayout
                     android:id="@+id/btnAlertas"
                     android:layout_width="150dp"
@@ -151,14 +151,14 @@
                     <ImageView
                         android:layout_width="56dp"
                         android:layout_height="56dp"
-                        android:src="@drawable/ic_clock"
+                        android:src="@drawable/ic_education_2"
                         app:tint="@android:color/white" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        android:text="44"
+                        android:text="@string/conteudo_educativo"
                         android:textColor="@android:color/white"
                         android:textSize="14sp" />
                 </LinearLayout>

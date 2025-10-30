@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">CuidArtrite</string>
+    <string name="conteudo_educativo">Conteúdo educativo</string>
+    <string name="tecnicas_de_alivio">Tecnicas de Alívio</string>
+    <string name="avaliacao_da_dor">Avaliação da Dor</string>
 </resources>
