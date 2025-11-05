@@ -20,6 +20,21 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 
+        binding.btnPainAssessment.setOnClickListener(v -> {
+            Intent intent = new Intent(this, PainAssessmentActivity.class);
+            startActivity(intent);
+        });
+
+//        binding.btnReliefTechniques.setOnClickListener(v -> {
+//            Intent intent = new Intent(this, asd.class);
+//            startActivity(intent);
+//        });
+
+//        binding.btnAgenda.setOnClickListener(v -> {
+//            Intent intent = new Intent(this, asd.class);
+//            startActivity(intent);
+//        });
+
         binding.btnEducationalContent.setOnClickListener(v -> {
             Intent intent = new Intent(this, EducationalContentActivity.class);
             startActivity(intent);
