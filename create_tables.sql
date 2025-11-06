@@ -81,6 +81,7 @@ CREATE TABLE technique_history (
   date DATETIME,
   initial_pain_scale INT,
   final_pain_scale INT,
+  sensation_description TEXT,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (technique_id) REFERENCES technique(id)
@@ -195,11 +196,11 @@ VALUES
 -- ------------------------------
 -- Technique History Inserts
 -- ------------------------------
-INSERT INTO technique_history (user_id, technique_id, date, initial_pain_scale, final_pain_scale)
+INSERT INTO technique_history (user_id, technique_id, date, initial_pain_scale, final_pain_scale, sensation_description)
 VALUES
-(1, 1, '2025-10-25 10:15:00', 3, 2),   -- Fernando did RESPIRAÇÃO PROFUNDA
-(1, 4, '2025-10-26 16:00:00', 4, 2),   -- Fernando did RELAXAMENTO MUSCULAR
-(2, 2, '2025-10-25 09:15:00', 5, 3);   -- Maria did RESPIRAÇÃO 4-7-8
+(1, 1, '2025-10-25 10:15:00', 3, 2, "Não senti dor alguma."),   -- Fernando did RESPIRAÇÃO PROFUNDA
+(1, 4, '2025-10-26 16:00:00', 4, 2, "Senti muita dor."),   -- Fernando did RELAXAMENTO MUSCULAR
+(2, 2, '2025-10-25 09:15:00', 5, 3, "Não senti dor.");   -- Maria did RESPIRAÇÃO 4-7-8
 
 -- ------------------------------
 -- Educative History Inserts
