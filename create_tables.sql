@@ -1,4 +1,4 @@
- CREATE DATABASE IF NOT EXISTS dbCuidArtrite CHARACTER SET utf8;
+CREATE DATABASE IF NOT EXISTS dbCuidArtrite CHARACTER SET utf8;
 USE dbCuidArtrite;
 
 -- ------------------------------
@@ -7,6 +7,8 @@ USE dbCuidArtrite;
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(255),
+  username VARCHAR(255),
+  email VARCHAR(255),
   age INT,
   gender VARCHAR(45),
   phone VARCHAR(20),
@@ -176,10 +178,10 @@ INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_typ
 -- ------------------------------
 -- Users Inserts
 -- ------------------------------
-INSERT INTO users (name, age, gender, phone, password_hash, font_size, contrast, reading_mode, allow_data_collection)
+INSERT INTO users (name, username, email, age, gender, phone, password_hash, font_size, contrast, reading_mode, allow_data_collection)
 VALUES
-('Fernando', 27, 'Masculino', '51999999999', 'hash123', 2, 0, 0, 1),
-('Maria', 65, 'Feminino', '51988888888', 'hash456', 2, 1, 1, 1);
+('Marcos', 'Marcos101', 'marcos_olimpia@yahoo.com.br', 27, 'Masculino', '51999999999', 'hash123', 2, 0, 0, 1),
+('Maria','Maria10','maria_oliveira@yahoo.com.br', 65, 'Feminino', '51988888888', 'hash456', 2, 1, 1, 1);
 
 -- ------------------------------
 -- Pain Assessment Inserts
