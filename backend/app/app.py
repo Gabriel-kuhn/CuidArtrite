@@ -139,6 +139,49 @@ def create_account():
             content_type="application/json; charset=utf-8"
         ), 500
 
+@app.route("/tecnica/<int:id>", methods=["GET"])
+def get_technique(id):
+    try:
+        cursor = conn.cursor(dictionary=True)
+        query = """
+        SELECT t.id, t.title, t.how_long, t.benefits, t.video_url, 
+               t.picture_url, t.how_to_do, t.hint, tc.name AS technique_type
+        FROM technique AS t
+        INNER JOIN technique_type AS tc
+        ON t.technique_type_id = tc.id
+        WHERE t.id = %s
+        """
+        cursor.execute(query, (id,))
+        record = cursor.fetchone()
+        cursor.close()
+
+        if not record:
+            return Response(
+                json.dumps({"error": "Técnica não encontrada"}, ensure_ascii=False),
+                content_type="application/json; charset=utf-8"
+            ), 404
+
+        # Format and return JSON
+        return Response(
+            json.dumps({
+                "id": record["id"],
+                "titulo": record["title"],
+                "beneficios": record["benefits"],
+                "video_url": record["video_url"],
+                "imagem_url": record["picture_url"],
+                "como_fazer": record["how_to_do"],
+                "dica": record["hint"],
+                "quanto_tempo": record["how_long"],
+                "tipo_tecnica": record["technique_type"]
+            }, ensure_ascii=False),
+            content_type="application/json; charset=utf-8"
+        ), 200
+
+    except Exception as e:
+        return Response(
+            json.dumps({"error": f"Erro interno no servidor: {str(e)}"}, ensure_ascii=False),
+            content_type="application/json; charset=utf-8"
+        ), 500
 
 if __name__ == '__main__':
     #app.run(debug=True)
