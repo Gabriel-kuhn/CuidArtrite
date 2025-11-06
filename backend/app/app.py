@@ -137,6 +137,54 @@ def create_account():
             content_type="application/json; charset=utf-8"
         ), 500
 
+@app.route("/lista-tecnica/<int:id>", methods=["GET"])
+def get_all_techniques(id):
+    try:
+        cursor = conn.cursor(dictionary=True)
+        query = """
+        SELECT t.id, t.title, t.how_long, t.benefits, t.video_url, 
+               t.picture_url, t.how_to_do, t.hint, tc.name AS technique_type
+        FROM technique AS t
+        INNER JOIN technique_type AS tc
+        ON t.technique_type_id = tc.id
+        WHERE tc.id = %s
+        """
+        cursor.execute(query, (id,))
+        records = cursor.fetchall()
+        cursor.close()
+
+        if not records:
+            return Response(
+                json.dumps([], ensure_ascii=False),  # empty list if nothing found
+                content_type="application/json; charset=utf-8"
+            ), 200
+
+        # Format results as a list of dicts
+        techniques = []
+        for record in records:
+            techniques.append({
+                "id": record["id"],
+                "titulo": record["title"],
+                "beneficios": record["benefits"],
+                "video_url": record["video_url"],
+                "imagem_url": record["picture_url"],
+                "como_fazer": record["how_to_do"],
+                "dica": record["hint"],
+                "quanto_tempo": record["how_long"],
+                "tipo_tecnica": record["technique_type"]
+            })
+
+        return Response(
+            json.dumps(techniques, ensure_ascii=False),
+            content_type="application/json; charset=utf-8"
+        ), 200
+
+    except Exception as e:
+        return Response(
+            json.dumps({"error": f"Erro interno no servidor: {str(e)}"}, ensure_ascii=False),
+            content_type="application/json; charset=utf-8"
+        ), 500
+
 @app.route("/tecnica/<int:id>", methods=["GET"])
 def get_technique(id):
     try:
