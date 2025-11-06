@@ -2,8 +2,7 @@ import json
 
 from flask import Flask, request, jsonify, Response
 import mysql.connector
-import os
-import base64
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -68,7 +67,6 @@ def login():
             json.dumps({"error": f"Erro interno no servidor: {str(e)}"}, ensure_ascii=False),
             content_type="application/json; charset=utf-8"
         ), 500
-
 
 @app.route("/cadastro", methods=["POST"])
 def create_account():
@@ -182,6 +180,60 @@ def get_technique(id):
             json.dumps({"error": f"Erro interno no servidor: {str(e)}"}, ensure_ascii=False),
             content_type="application/json; charset=utf-8"
         ), 500
+
+@app.route("/registra-atividade", methods=["POST"])
+def record_activity():
+    try:
+        # Get JSON data from request
+        data = request.get_json()
+        
+        fields = ["user_id", "tecnica_id", "nivel_dor_antes", "nivel_dor_apos", "descricao_sensacao"]
+
+        if not data:
+            return Response(
+                json.dumps({"error": "Os dados da requisição são obrigatórios"}, ensure_ascii=False),
+                content_type="application/json; charset=utf-8"
+            ), 400
+        
+        for field in fields:
+            if field not in data or data[field] in [None, ""]:
+                return Response(
+                    json.dumps({"error": f"O campo '{field}' é obrigatório"}, ensure_ascii=False),
+                    content_type="application/json; charset=utf-8"
+                ), 400
+        
+        user_id = data['user_id']
+        technique_id = data['tecnica_id']
+        initial_pain_scale = data['nivel_dor_antes']
+        final_pain_scale = data['nivel_dor_apos']
+        sensation_description = data['descricao_sensacao']
+        current_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # current timestamp
+        
+        cursor = conn.cursor(dictionary=True)
+        
+        # insert new pain record
+        insert_query = """
+        INSERT INTO technique_history
+        (user_id, technique_id, initial_pain_scale, final_pain_scale, sensation_description, date)
+        VALUES (%s, %s, %s, %s, %s, %s)
+        """
+        cursor.execute(insert_query, (
+            user_id, technique_id, initial_pain_scale, final_pain_scale, sensation_description, current_date
+        ))
+        conn.commit()
+        cursor.close()
+        
+        return Response(
+            json.dumps({"message": "Atividade registrada com sucesso"}, ensure_ascii=False),
+            content_type="application/json; charset=utf-8"
+        ), 200
+        
+    except Exception as e:
+        return Response(
+            json.dumps({"error": f"Erro interno no servidor: {str(e)}"}, ensure_ascii=False),
+            content_type="application/json; charset=utf-8"
+        ), 500
+    
 
 if __name__ == '__main__':
     #app.run(debug=True)
