@@ -44,7 +44,6 @@ CREATE TABLE pain_assessment (
   id INT NOT NULL AUTO_INCREMENT,
   user_id INT NOT NULL,
   pain_scale INT,
-  graphic_scale VARCHAR(45),
   localized_pain VARCHAR(45),
   date DATETIME,
   PRIMARY KEY (id),

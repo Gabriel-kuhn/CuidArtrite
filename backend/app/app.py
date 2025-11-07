@@ -283,6 +283,55 @@ def record_activity():
             content_type="application/json; charset=utf-8"
         ), 500
     
+
+
+@app.route("/historico-tecnicas/<int:id>", methods=["GET"])
+def get_technique_history(id):
+    try:
+        cursor = conn.cursor(dictionary=True)
+        query = """
+        SELECT th.id, th.date, th.initial_pain_scale, th.final_pain_scale, th.sensation_description, t.title
+        FROM technique_history AS th
+        INNER JOIN technique AS t
+        ON th.technique_id = t.id
+        INNER JOIN technique_type AS tt 
+        ON t.technique_type_id = tt.id
+        WHERE th.user_id = %s
+        ORDER BY th.date DESC
+        """
+        cursor.execute(query, (id,))
+        records = cursor.fetchall()
+        cursor.close()
+
+        if not records:
+            return Response(
+                json.dumps({"error": "Histórico de técnicas não encontrado para o usuário."}, ensure_ascii=False),
+                content_type="application/json; charset=utf-8"
+            ), 404
+
+        # Format response
+        result = []
+        for record in records:
+            result.append({
+                "id": record["id"],
+                "titulo_tecnica": record["title"],
+                "data": record["date"].strftime("%Y-%m-%d") if record["date"] else None,
+                "nivel_dor_antes": record["initial_pain_scale"],
+                "nivel_dor_depois": record["final_pain_scale"],
+                "sensacao": record["sensation_description"],
+            })
+
+        return Response(
+            json.dumps(result, ensure_ascii=False),
+            content_type="application/json; charset=utf-8"
+        ), 200
+
+    except Exception as e:
+        return Response(
+            json.dumps({"error": f"Erro interno no servidor: {str(e)}"}, ensure_ascii=False),
+            content_type="application/json; charset=utf-8"
+        ), 500
+
 @app.route("/dores-diarias/<int:user_id>", methods=["GET"])
 def get_dores_diarias(user_id):
     try:
