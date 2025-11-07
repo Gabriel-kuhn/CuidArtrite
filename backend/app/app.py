@@ -1,4 +1,5 @@
 import json
+import sys
 
 from flask import Flask, request, jsonify, Response
 import mysql.connector
@@ -282,7 +283,45 @@ def record_activity():
             content_type="application/json; charset=utf-8"
         ), 500
     
+@app.route("/dores-diarias/<int:user_id>", methods=["GET"])
+def get_dores_diarias(user_id):
+    try:
+        cursor = conn.cursor(dictionary=True)
+        query = """
+        SELECT p.date, p.pain_scale, p.localized_pain 
+        FROM pain_assessment AS p
+        WHERE p.user_id = %s
+        """
+        cursor.execute(query, (user_id,))
+        records = cursor.fetchall()
+        cursor.close()
+
+        if not records:
+            return Response(
+                json.dumps({"error": "Dores não encontradas"}, ensure_ascii=False),
+                content_type="application/json; charset=utf-8"
+            ), 404
+
+        pains = []
+        for record in records:
+            pains.append({
+                "dia": record["date"].isoformat(),  # or str(record["date"])
+                "nivel_dor": record["pain_scale"],
+                "parte_corpo": record["localized_pain"],
+            })
+
+        # Format and return JSON
+        return Response(
+            json.dumps(pains, ensure_ascii=False),
+            content_type="application/json; charset=utf-8"
+        ), 200
+
+    except Exception as e:
+        return Response(
+            json.dumps({"error": f"Erro interno no servidor: {str(e)}"}, ensure_ascii=False),
+            content_type="application/json; charset=utf-8"
+        ), 500
 
 if __name__ == '__main__':
-    #app.run(debug=True)
-    app.run(host="0.0.0.0", port=5000) # para rodar em lan
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else 5000
+    app.run(host="0.0.0.0", port=port) # para rodar em lan
