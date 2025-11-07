@@ -332,12 +332,104 @@ def get_technique_history(id):
             content_type="application/json; charset=utf-8"
         ), 500
 
+@app.route("/registra-dor-diaria", methods=["POST"])
+def registra_dor_diaria():
+    try:
+        # Get JSON data from request
+        data = request.get_json()
+
+        fields = ["user_id", "nivel_dor", "descricao", "localizacao_dor"]
+
+        if not data:
+            return Response(
+                json.dumps({"error": "Os dados da requisição são obrigatórios"}, ensure_ascii=False),
+                content_type="application/json; charset=utf-8"
+            ), 400
+
+        for field in fields:
+            if field not in data or data[field] in [None, ""]:
+                return Response(
+                    json.dumps({"error": f"O campo '{field}' é obrigatório"}, ensure_ascii=False),
+                    content_type="application/json; charset=utf-8"
+                ), 400
+
+        user_id = data['user_id']
+        pain_scale = data['nivel_dor']
+        # descricao is validated but not stored in pain_assessment table
+        localized_pain = data['localizacao_dor']
+        current_datetime = datetime.now()
+        current_date = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
+        current_day = current_datetime.strftime("%Y-%m-%d")  # just the date part
+
+        cursor = conn.cursor(dictionary=True)
+
+        # Verificar se o usuário existe
+        check_query = "SELECT id FROM users WHERE id = %s"
+        cursor.execute(check_query, (user_id,))
+        existing_user = cursor.fetchone()
+
+        if not existing_user:
+            cursor.close()
+            return Response(
+                json.dumps({"error": "Usuário não encontrado"}, ensure_ascii=False),
+                content_type="application/json; charset=utf-8"
+            ), 404
+
+        # Verificar se já existe registro de dor para o dia atual
+        check_pain_query = """
+        SELECT id FROM pain_assessment
+        WHERE user_id = %s AND DATE(date) = %s
+        """
+        cursor.execute(check_pain_query, (user_id, current_day))
+        existing_pain = cursor.fetchone()
+
+        if existing_pain:
+            # Atualizar registro existente
+            update_query = """
+            UPDATE pain_assessment
+            SET pain_scale = %s, localized_pain = %s, date = %s
+            WHERE id = %s
+            """
+            cursor.execute(update_query, (
+                pain_scale, localized_pain, current_date, existing_pain['id']
+            ))
+            conn.commit()
+            cursor.close()
+
+            return Response(
+                json.dumps({"message": "Dor diária atualizada com sucesso"}, ensure_ascii=False),
+                content_type="application/json; charset=utf-8"
+            ), 200
+        else:
+            # Inserir novo registro de dor diária
+            insert_query = """
+            INSERT INTO pain_assessment
+            (user_id, pain_scale, localized_pain, date)
+            VALUES (%s, %s, %s, %s)
+            """
+            cursor.execute(insert_query, (
+                user_id, pain_scale, localized_pain, current_date
+            ))
+            conn.commit()
+            cursor.close()
+
+            return Response(
+                json.dumps({"message": "Dor diária registrada com sucesso"}, ensure_ascii=False),
+                content_type="application/json; charset=utf-8"
+            ), 200
+
+    except Exception as e:
+        return Response(
+            json.dumps({"error": f"Erro interno no servidor: {str(e)}"}, ensure_ascii=False),
+            content_type="application/json; charset=utf-8"
+        ), 500
+
 @app.route("/dores-diarias/<int:user_id>", methods=["GET"])
 def get_dores_diarias(user_id):
     try:
         cursor = conn.cursor(dictionary=True)
         query = """
-        SELECT p.date, p.pain_scale, p.localized_pain 
+        SELECT p.date, p.pain_scale, p.localized_pain
         FROM pain_assessment AS p
         WHERE p.user_id = %s
         """
@@ -354,7 +446,7 @@ def get_dores_diarias(user_id):
         pains = []
         for record in records:
             pains.append({
-                "dia": record["date"].isoformat(),  # or str(record["date"])
+                "dia": record["date"].date().isoformat(),
                 "nivel_dor": record["pain_scale"],
                 "parte_corpo": record["localized_pain"],
             })
