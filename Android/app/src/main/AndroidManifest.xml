@@ -26,6 +26,7 @@
         <activity android:name=".view.HomeActivity"/>
         <activity android:name=".view.RegisterActivity"/>
         <activity android:name=".view.PainAssessmentActivity"/>
+        <activity android:name=".view.ReliefTechiniquesActivity"/>
 
     </application>
 

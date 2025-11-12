@@ -25,10 +25,10 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-//        binding.btnReliefTechniques.setOnClickListener(v -> {
-//            Intent intent = new Intent(this, asd.class);
-//            startActivity(intent);
-//        });
+        binding.btnReliefTechniques.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ReliefTechiniquesActivity.class);
+            startActivity(intent);
+        });
 
 //        binding.btnAgenda.setOnClickListener(v -> {
 //            Intent intent = new Intent(this, asd.class);
