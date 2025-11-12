@@ -32,7 +32,7 @@ def login():
         # Query to get user information
         cursor = conn.cursor(dictionary=True)
         query = """
-        SELECT u.id, u.name, u.age, u.gender, u.phone, u.font_size, 
+        SELECT u.id, u.name, u.email, u.age, u.gender, u.phone, u.font_size, 
                u.contrast, u.reading_mode, u.allow_data_collection
         FROM users u
         WHERE u.username = %s AND u.password_hash = %s
@@ -52,6 +52,7 @@ def login():
             json.dumps({
                 "id": user["id"],
                 "nome": user["name"],
+                "email": user["email"],
                 "idade": user["age"],
                 "sexo": user["gender"],
                 "telefone": user["phone"],
