@@ -43,7 +43,6 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, EducationalContentActivity::class.java)
             startActivity(intent)
         }
-        
 
         binding.fabLogout.setOnClickListener { v: View? ->
             lifecycleScope.launch {
