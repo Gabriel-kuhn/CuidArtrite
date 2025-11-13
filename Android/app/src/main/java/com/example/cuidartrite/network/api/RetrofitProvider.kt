@@ -1,4 +1,4 @@
-package com.example.gerenciadordetc.network.api
+package com.example.cuidartrite.network.api
 
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
@@ -9,7 +9,7 @@ class RetrofitProvider {
     companion object {
 
         fun getRetrofit(): Retrofit {
-            val urlServer = "http://34.151.232.143:5000/"
+            val urlServer = "https://twanda-leery-kimbra.ngrok-free.dev/"
             val gson = GsonBuilder().create()
 
             return Retrofit.Builder()

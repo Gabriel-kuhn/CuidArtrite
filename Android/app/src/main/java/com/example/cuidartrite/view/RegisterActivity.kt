@@ -15,11 +15,12 @@ class RegisterActivity : AppCompatActivity() {
     var idade: String? = null
     var email: String? = null
     var telefone: String? = null
+    var senha: String? = null
 
     var comorbidadesSelecionadas: List<String> = emptyList()
 
-    var contraste: String? = null
-    var tamanhoFonte: String? = null
+    var contraste: Boolean? = null
+    var tamanhoFonte: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

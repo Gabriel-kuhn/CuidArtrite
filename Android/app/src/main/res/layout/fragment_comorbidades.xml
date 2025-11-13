@@ -3,21 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:paddingHorizontal="16dp"
+    android:paddingTop="16dp">
 
     <CheckBox
-        android:id="@+id/chkOpcao1"
+        android:id="@+id/chkArtrite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Comorbidade 1"
+        android:text="Artrite"
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/chkOpcao2"
+        android:id="@+id/chkDoencasReumaticas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Comorbidade 2"
-        app:layout_constraintTop_toBottomOf="@id/chkOpcao1" />
+        android:text="Doenças Reumáticas"
+        app:layout_constraintTop_toBottomOf="@id/chkArtrite" />
 
     <LinearLayout
         android:id="@+id/bottomNavigationLayout"
@@ -28,13 +29,18 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <!-- Botão Voltar -->
-        <ImageView
+        <FrameLayout
             android:id="@+id/btnVoltar"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="Voltar"
-            android:src="@drawable/ic_arrow_left" />
+            android:layout_width="64dp"
+            android:layout_height="64dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:contentDescription="Voltar"
+                android:src="@drawable/ic_arrow_left" />
+        </FrameLayout>
 
         <!-- Bolinhas -->
         <LinearLayout
@@ -64,13 +70,18 @@
                 android:background="@drawable/ic_dot" />
         </LinearLayout>
 
-        <ImageView
+        <FrameLayout
             android:id="@+id/btnProximo"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="16dp"
-            android:contentDescription="Avançar"
-            android:src="@drawable/ic_arrow_right" />
+            android:layout_width="64dp"
+            android:layout_height="64dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:contentDescription="Avançar"
+                android:src="@drawable/ic_arrow_right" />
+        </FrameLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

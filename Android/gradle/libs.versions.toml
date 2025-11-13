@@ -13,6 +13,7 @@ mpandroidchart = "v3.1.0"
 retrofit = "2.9.0"
 okhttp3 = "4.12.0"
 gridlayout = "1.1.0"
+toasty = "1.5.2"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -31,6 +32,8 @@ retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", ver
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp3" }
 okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp3" }
 gridlayout = { group = "androidx.gridlayout", name = "gridlayout", version.ref = "gridlayout" }
+
+toasty = { group = "com.github.GrenderG", name = "toasty", version.ref = "toasty" }
 
 
 [plugins]

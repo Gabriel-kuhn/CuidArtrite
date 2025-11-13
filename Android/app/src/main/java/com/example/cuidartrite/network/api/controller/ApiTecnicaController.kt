@@ -5,7 +5,7 @@ import com.example.cuidartrite.network.api.service.TecnicaService
 import com.example.cuidartrite.network.models.RegistrarAtividadeRequest
 import com.example.cuidartrite.network.models.TecnicaDetalheResponse
 import com.example.cuidartrite.network.models.TecnicaResponse
-import com.example.gerenciadordetc.network.api.RetrofitProvider
+import com.example.cuidartrite.network.api.RetrofitProvider
 
 class ApiTecnicaController {
 

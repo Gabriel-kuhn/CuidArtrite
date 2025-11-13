@@ -62,4 +62,7 @@ dependencies {
 
     // Line graph
     implementation(libs.mpandroidchart)
+
+    // Toasty
+    implementation(libs.toasty)
 }

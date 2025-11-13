@@ -1,14 +1,13 @@
 package com.example.cuidartrite.network.api.controller
 
 import android.util.Log
+import com.example.cuidartrite.network.api.RetrofitProvider
 import com.example.cuidartrite.network.api.service.CadastroService
-import com.example.cuidartrite.network.models.CadastroRequest
-import com.example.cuidartrite.network.models.UserResponse
-import com.example.gerenciadordetc.network.api.RetrofitProvider
+import com.example.cuidartrite.network.models.User
 
 class ApiCadastroController {
 
-    suspend fun cadastrar(request: CadastroRequest): UserResponse? {
+    suspend fun cadastrar(request: User): User? {
         val service = RetrofitProvider.getRetrofit().create(CadastroService::class.java)
         return try {
             service.cadastrar(request)

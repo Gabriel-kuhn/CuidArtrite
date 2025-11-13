@@ -1,4 +1,4 @@
-package com.example.gerenciadordetc.network.models
+package com.example.cuidartrite.network.models
 
 data class LoginRequest(
     val user: String,

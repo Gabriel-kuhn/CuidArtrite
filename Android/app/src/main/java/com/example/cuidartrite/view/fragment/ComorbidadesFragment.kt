@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import androidx.fragment.app.Fragment
 import com.example.cuidartrite.databinding.FragmentComorbidadesBinding
 import com.example.cuidartrite.view.RegisterActivity
@@ -22,8 +23,10 @@ class ComorbidadesFragment : Fragment() {
 
         binding.btnProximo.setOnClickListener {
             val selecionadas = mutableListOf<String>()
-            if (binding.chkOpcao1.isChecked) selecionadas.add("Comorbidade 1")
-            if (binding.chkOpcao2.isChecked) selecionadas.add("Comorbidade 2")
+
+            getCheckBoxValue(binding.chkArtrite, selecionadas)
+            getCheckBoxValue(binding.chkDoencasReumaticas, selecionadas)
+
             activity.comorbidadesSelecionadas = selecionadas
 
             activity.abrirFragment(AcessibilidadeFragment())
@@ -31,6 +34,14 @@ class ComorbidadesFragment : Fragment() {
 
         binding.btnVoltar.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
+    }
+
+    private fun getCheckBoxValue(checkBox: CheckBox, selecionadas: MutableList<String>) {
+        checkBox.let {
+            if (it.isChecked) {
+                selecionadas.add(it.text.toString())
+            }
         }
     }
 }

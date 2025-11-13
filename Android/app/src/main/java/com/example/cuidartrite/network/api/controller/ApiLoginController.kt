@@ -1,10 +1,10 @@
-package com.example.gerenciadordetc.network.api.controller
+package com.example.cuidartrite.network.api.controller
 
 import android.util.Log
-import com.example.gerenciadordetc.database.User
-import com.example.gerenciadordetc.network.api.RetrofitProvider
-import com.example.gerenciadordetc.network.api.service.LoginService
-import com.example.gerenciadordetc.network.models.LoginRequest
+import com.example.cuidartrite.network.api.RetrofitProvider
+import com.example.cuidartrite.network.api.service.LoginService
+import com.example.cuidartrite.network.models.LoginRequest
+import com.example.cuidartrite.network.models.User
 import kotlinx.coroutines.runBlocking
 
 class ApiLoginController {

@@ -1,4 +1,4 @@
-package com.example.gerenciadordetc.network.api
+package com.example.cuidartrite.network.api
 
 import android.util.Log
 import com.example.cuidartrite.BuildConfig

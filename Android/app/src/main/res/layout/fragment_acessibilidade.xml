@@ -2,23 +2,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/btn_blue"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:paddingHorizontal="16dp"
+    android:paddingTop="16dp">
 
 
-    <EditText
-        android:id="@+id/inputContraste"
+    <CheckBox
+        android:id="@+id/chkContraste"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contraste"
+        android:text="Contraste"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/inputTamanhoFonte"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Tamanho da fonte"
-        app:layout_constraintTop_toBottomOf="@+id/inputContraste" />
+        android:layout_marginTop="8dp"
+        android:hint="Tamanho da Fonte"
+        app:endIconMode="dropdown_menu"
+        app:layout_constraintTop_toBottomOf="@+id/chkContraste">
+
+        <AutoCompleteTextView
+            android:id="@+id/inputTamanhoFonte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="false"
+            android:inputType="none"
+            android:paddingHorizontal="15dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:id="@+id/bottomNavigationLayout"
@@ -29,13 +42,18 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <!-- Botão Voltar -->
-        <ImageView
+        <FrameLayout
             android:id="@+id/btnVoltar"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="Voltar"
-            android:src="@drawable/ic_arrow_left" />
+            android:layout_width="64dp"
+            android:layout_height="64dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:contentDescription="Voltar"
+                android:src="@drawable/ic_arrow_left" />
+        </FrameLayout>
 
         <!-- Bolinhas -->
         <LinearLayout
@@ -65,13 +83,18 @@
                 android:backgroundTint="@color/btn_blue" />
         </LinearLayout>
 
-        <ImageView
+        <FrameLayout
             android:id="@+id/btnFinalizar"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="16dp"
-            android:contentDescription="Avançar"
-            android:src="@drawable/ic_check" />
+            android:layout_width="64dp"
+            android:layout_height="64dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:contentDescription="Avançar"
+                android:src="@drawable/ic_check" />
+        </FrameLayout>
 
     </LinearLayout>
 

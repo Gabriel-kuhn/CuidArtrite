@@ -1,7 +1,7 @@
-package com.example.gerenciadordetc.network.api.service
+package com.example.cuidartrite.network.api.service
 
-import com.example.gerenciadordetc.database.User
-import com.example.gerenciadordetc.network.models.LoginRequest
+import com.example.cuidartrite.network.models.LoginRequest
+import com.example.cuidartrite.network.models.User
 import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
