@@ -3,7 +3,7 @@
 
     <style name="CustomCardView" parent="Widget.MaterialComponents.CardView">
         <item name="strokeWidth">0dp</item>
-        <item name="cardBackgroundColor">@color/cinzaClaro</item>
+        <item name="cardBackgroundColor">@color/grey</item>
     </style>
 
 

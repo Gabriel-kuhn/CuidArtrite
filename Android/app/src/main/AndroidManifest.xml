@@ -31,6 +31,8 @@
         <activity android:name=".view.ReliefTechiniquesActivity" />
         <activity android:name=".view.AddPainAssessmentActivity" />
         <activity android:name=".view.LoginActivity" />
+        <activity android:name=".view.ProgressAndSensationDiaryActivity" />
+        <activity android:name=".view.ProgressSensationDatailActivity" />
 
     </application>
 
