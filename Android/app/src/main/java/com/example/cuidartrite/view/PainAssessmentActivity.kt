@@ -1,5 +1,6 @@
 package com.example.cuidartrite.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cuidartrite.databinding.ActivityPainAssessmentBinding
@@ -35,6 +36,10 @@ class PainAssessmentActivity : AppCompatActivity() {
         binding.btnLast7.setOnClickListener { showLast7Days() }
         binding.btnWeek.setOnClickListener { showByWeek() }
         binding.btnMonth.setOnClickListener { showByMonth() }
+
+        binding.fabAddPain.setOnClickListener {
+            startActivity(Intent(this,AddPainAssessmentActivity::class.java))
+        }
     }
 
 

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:context=".view.AddPainAssessmentActivity">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Registrar Nível de Dor"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <!-- Boneco para seleção da parte do corpo -->
+    <ImageView
+        android:id="@+id/imgBoneco"
+        android:layout_width="200dp"
+        android:layout_height="300dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Boneco do corpo humano"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_check" />
+
+    <!-- Slider do nível de dor -->
+    <com.google.android.material.slider.Slider
+        android:id="@+id/sliderNivelDor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:stepSize="1"
+        android:valueFrom="0"
+        android:valueTo="10"
+        app:labelBehavior="gone" />
+
+    <!-- Exibição do valor atual -->
+    <TextView
+        android:id="@+id/tvValorDor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Nível atual: 0"
+        android:textSize="16sp" />
+
+    <!-- Descrição do nível de dor -->
+    <TextView
+        android:id="@+id/tvDescricaoDor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Sem dor."
+        android:textAlignment="center"
+        android:textSize="14sp" />
+
+    <!-- Botão de registro -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRegistrarDor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="12dp"
+        android:text="Registrar Dor" />
+
+</LinearLayout>

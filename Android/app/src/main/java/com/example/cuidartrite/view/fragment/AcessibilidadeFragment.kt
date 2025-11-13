@@ -39,7 +39,7 @@ class AcessibilidadeFragment : Fragment() {
         binding.inputTamanhoFonte.setOnItemClickListener { _, _, position, _ ->
             tamanhoFonteSelecionado = FontSize.lista[position]
         }
-        
+
         binding.btnFinalizar.setOnClickListener {
             if (tamanhoFonteSelecionado == null) {
                 Toasty.warning(requireContext(), "Selecione o tamanho da fonte.", Toasty.LENGTH_SHORT, true).show()
