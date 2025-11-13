@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_package = "com.example.cuidartrite.proto";
+option java_multiple_files = true;
+
+message UserProto {
+  int32 id = 1;
+  string username = 2;
+  string nome = 3;
+  string email = 4;
+  int32 idade = 5;
+  string sexo = 6;
+  string telefone = 7;
+  int32 tamanho_fonte = 8;
+  int32 contraste = 9;
+  int32 leitura_voz = 10;
+  int32 coletar_dados = 11;
+  string password = 12;
+}

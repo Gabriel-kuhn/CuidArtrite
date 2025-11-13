@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
+    alias(libs.plugins.protobuf)
 }
 
 android {
@@ -50,6 +51,7 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.core.ktx)
     implementation(libs.gridlayout)
+    implementation(libs.datastore.preferences)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -65,4 +67,22 @@ dependencies {
 
     // Toasty
     implementation(libs.toasty)
+
+    // Proto DataStore
+    implementation(libs.protobuf)
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.24.0"
+    }
+    generateProtoTasks {
+        all().forEach {
+            it.builtins {
+                create("java") {
+                    option("lite")
+                }
+            }
+        }
+    }
 }
