@@ -76,7 +76,7 @@ def create_account():
         # Get JSON data from request
         data = request.get_json()
         
-        fields = ["nome", "email", "idade", "sexo", "telefone", "tamanho_fonte", "contraste", "leitura_voz", "coletar_dados", "password"]
+        fields = ["username", "nome", "email", "idade", "sexo", "telefone", "tamanho_fonte", "contraste", "leitura_voz", "coletar_dados", "password"]
 
         if not data:
             return Response(
@@ -91,6 +91,7 @@ def create_account():
                     content_type="application/json; charset=utf-8"
                 ), 400
         
+        username = data['username']
         name = data['nome']
         email = data['email']
         age = data['idade']
@@ -119,11 +120,11 @@ def create_account():
         # Inserir novo usuário
         insert_query = """
         INSERT INTO users 
-        (name, email, age, gender, phone, font_size, contrast, reading_mode, allow_data_collection, password_hash)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        (username, name, email, age, gender, phone, font_size, contrast, reading_mode, allow_data_collection, password_hash)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """
         cursor.execute(insert_query, (
-            name, email, age, gender, phone, font_size, contrast, reading_mode, allow_data_collection, password_hash
+            username, name, email, age, gender, phone, font_size, contrast, reading_mode, allow_data_collection, password_hash
         ))
         conn.commit()
         cursor.close()
