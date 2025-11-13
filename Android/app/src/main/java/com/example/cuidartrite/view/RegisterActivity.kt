@@ -10,6 +10,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var binding: ActivityRegisterBinding
 
     // Dados coletados ao longo do fluxo
+    var usuario: String? = null
     var nome: String? = null
     var sexo: String? = null
     var idade: String? = null

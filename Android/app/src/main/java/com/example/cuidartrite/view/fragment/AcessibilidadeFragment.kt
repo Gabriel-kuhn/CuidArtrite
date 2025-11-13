@@ -48,6 +48,7 @@ class AcessibilidadeFragment : Fragment() {
 
             val user = User(
                 null,
+                username = activity.usuario!!,
                 nome = activity.nome!!,
                 email = activity.email!!,
                 idade = activity.idade?.toIntOrNull() ?: 0,

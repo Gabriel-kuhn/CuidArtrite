@@ -35,6 +35,7 @@ class CadastroBasicoFragment : Fragment() {
 
         binding.btnProximo.setOnClickListener {
             if (validateFields(activity.sexo)) {
+                activity.usuario = binding.inputUsuario.text.toString()
                 activity.nome = binding.inputNome.text.toString()
                 activity.idade = binding.inputIdade.text.toString()
                 activity.email = binding.inputEmail.text.toString()
@@ -49,12 +50,13 @@ class CadastroBasicoFragment : Fragment() {
     }
 
     private fun validateFields(selectedSexo: String?): Boolean {
+        val usuario = binding.inputUsuario.text.toString().trim()
         val nome = binding.inputNome.text.toString().trim()
         val senha = binding.inputSenha.text.toString().trim()
         val idade = binding.inputIdade.text.toString().trim()
         val email = binding.inputEmail.text.toString().trim()
         val telefone = binding.inputTelefone.text.toString().trim()
 
-        return !(nome.isEmpty() || senha.isEmpty() || idade.isEmpty() || email.isEmpty() || telefone.isEmpty() || selectedSexo.isNullOrEmpty())
+        return !(usuario.isEmpty() || nome.isEmpty() || senha.isEmpty() || idade.isEmpty() || email.isEmpty() || telefone.isEmpty() || selectedSexo.isNullOrEmpty())
     }
 }
