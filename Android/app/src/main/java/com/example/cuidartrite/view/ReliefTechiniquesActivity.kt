@@ -5,7 +5,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cuidartrite.constants.ConstantsExtra.Companion.EXTRA_EXERCISE
+import com.example.cuidartrite.constants.ConstantsExtra.Companion.EXTRA_TECHINIQUE_TYPE_ID
 import com.example.cuidartrite.databinding.ActivityReliefTechiniquesBinding
+import com.example.cuidartrite.enums.TechiniqueType
 import com.example.cuidartrite.view.adapter.ProgressSensationAdapter
 
 class ReliefTechiniquesActivity : AppCompatActivity() {
@@ -32,6 +34,18 @@ class ReliefTechiniquesActivity : AppCompatActivity() {
                 intent.putExtra(EXTRA_EXERCISE, item.nome)
                 startActivity(intent)
             }
+        }
+
+        binding.cvGuidedStretches.setOnClickListener {
+            val intent = Intent(this, ExerciseListActivity::class.java)
+            intent.putExtra(EXTRA_TECHINIQUE_TYPE_ID, TechiniqueType.GuidedStretching)
+            startActivity(intent)
+        }
+
+        binding.cvBreathingTechniques.setOnClickListener {
+            val intent = Intent(this, ExerciseListActivity::class.java)
+            intent.putExtra(EXTRA_TECHINIQUE_TYPE_ID, TechiniqueType.BreathingTechnique)
+            startActivity(intent)
         }
     }
 }

@@ -12,5 +12,7 @@ data class TecnicaDetalheResponse(
     val comoFazer: String,
     val dica: String,
     @SerializedName("quanto_tempo")
-    val quantoTempo: Int
+    val quantoTempo: Int,
+    @SerializedName("tipo_tecnica")
+    val tipoRecnica: Int
 )

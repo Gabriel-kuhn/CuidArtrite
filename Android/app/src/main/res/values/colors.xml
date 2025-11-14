@@ -17,4 +17,6 @@
     <color name="btn_ripple">#40FFFFFF</color>
 
     <color name="event_marker">#92378DF8</color>
+
+    <color name="red">#A61212</color>
 </resources>

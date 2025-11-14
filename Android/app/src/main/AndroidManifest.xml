@@ -32,6 +32,7 @@
         <activity android:name=".view.AddPainAssessmentActivity" />
         <activity android:name=".view.LoginActivity" />
         <activity android:name=".view.ProgressSensationDatailActivity" />
+        <activity android:name=".view.ExerciseListActivity" />
 
     </application>
 
