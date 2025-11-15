@@ -466,6 +466,54 @@ def get_dores_diarias(user_id):
             content_type="application/json; charset=utf-8"
         ), 500
 
+@app.route("/resumo-tecnicas/<int:user_id>", methods=["GET"])
+def get_technique_summary(user_id):
+    try:
+        cursor = conn.cursor(dictionary=True)
+        query = """
+        SELECT
+            t.id,
+            t.title AS nome,
+            COUNT(th.id) AS vezes_praticada,
+            MAX(th.date) AS ultima_vez_praticada
+        FROM technique AS t
+        INNER JOIN technique_history AS th
+        ON t.id = th.technique_id
+        WHERE th.user_id = %s
+        GROUP BY t.id, t.title
+        ORDER BY ultima_vez_praticada DESC
+        """
+        cursor.execute(query, (user_id,))
+        records = cursor.fetchall()
+        cursor.close()
+
+        if not records:
+            return Response(
+                json.dumps([], ensure_ascii=False),
+                content_type="application/json; charset=utf-8"
+            ), 200
+
+        # Format response
+        result = []
+        for record in records:
+            result.append({
+                "id": record["id"],
+                "nome": record["nome"],
+                "vezes_praticada": record["vezes_praticada"],
+                "ultima_vez_praticada": record["ultima_vez_praticada"].strftime("%Y-%m-%d %H:%M:%S") if record["ultima_vez_praticada"] else None,
+            })
+
+        return Response(
+            json.dumps(result, ensure_ascii=False),
+            content_type="application/json; charset=utf-8"
+        ), 200
+
+    except Exception as e:
+        return Response(
+            json.dumps({"error": f"Erro interno no servidor: {str(e)}"}, ensure_ascii=False),
+            content_type="application/json; charset=utf-8"
+        ), 500
+
 if __name__ == '__main__':
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 5000
     app.run(host="0.0.0.0", port=port) # para rodar em lan

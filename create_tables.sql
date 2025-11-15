@@ -201,6 +201,44 @@ VALUES
 (1, 4, '2025-10-26 16:00:00', 4, 2, "Senti muita dor."),   -- Fernando did RELAXAMENTO MUSCULAR
 (2, 2, '2025-10-25 09:15:00', 5, 3, "Não senti dor.");   -- Maria did RESPIRAÇÃO 4-7-8
 
+-- User 1 (Marcos) - Multiple practices over time
+(1, 1, '2025-10-25 10:15:00', 3, 2, "Não senti dor alguma."),   -- RESPIRAÇÃO PROFUNDA
+(1, 1, '2025-10-27 08:30:00', 4, 2, "Me sinto mais relaxado."),   -- RESPIRAÇÃO PROFUNDA (2nd time)
+(1, 1, '2025-10-29 19:00:00', 5, 3, "Ajudou a acalmar."),   -- RESPIRAÇÃO PROFUNDA (3rd time)
+(1, 1, '2025-11-01 07:45:00', 3, 1, "Excelente para começar o dia."),   -- RESPIRAÇÃO PROFUNDA (4th time)
+(1, 1, '2025-11-05 21:00:00', 4, 2, "Dormi melhor depois."),   -- RESPIRAÇÃO PROFUNDA (5th time)
+
+(1, 4, '2025-10-26 16:00:00', 4, 2, "Senti muita dor."),   -- RELAXAMENTO MUSCULAR
+(1, 4, '2025-10-30 20:00:00', 5, 3, "Aliviou a tensão nos ombros."),   -- RELAXAMENTO MUSCULAR (2nd time)
+(1, 4, '2025-11-03 18:30:00', 4, 2, "Muito relaxante."),   -- RELAXAMENTO MUSCULAR (3rd time)
+
+(1, 2, '2025-10-28 22:00:00', 6, 4, "Ajudou a dormir."),   -- RESPIRAÇÃO 4-7-8
+(1, 2, '2025-11-02 21:30:00', 5, 3, "Senti tontura leve no início."),   -- RESPIRAÇÃO 4-7-8 (2nd time)
+
+(1, 3, '2025-11-04 14:00:00', 3, 2, "Alívio rápido."),   -- SUSPIRO DE ALÍVIO
+
+(1, 5, '2025-11-06 16:00:00', 5, 3, "O calor das mãos ajudou muito."),   -- TOQUE CALMANTE
+
+-- User 2 (Maria) - Multiple practices over time
+(2, 2, '2025-10-25 09:15:00', 5, 3, "Não senti dor."),   -- RESPIRAÇÃO 4-7-8
+(2, 2, '2025-10-28 20:00:00', 6, 4, "Melhorou meu sono."),   -- RESPIRAÇÃO 4-7-8 (2nd time)
+(2, 2, '2025-11-01 21:00:00', 5, 3, "Muito calmante."),   -- RESPIRAÇÃO 4-7-8 (3rd time)
+(2, 2, '2025-11-05 22:00:00', 4, 2, "Excelente técnica."),   -- RESPIRAÇÃO 4-7-8 (4th time)
+
+(2, 1, '2025-10-26 10:00:00', 4, 3, "Senti mais tranquila."),   -- RESPIRAÇÃO PROFUNDA
+(2, 1, '2025-10-31 08:00:00', 5, 3, "Boa para começar o dia."),   -- RESPIRAÇÃO PROFUNDA (2nd time)
+(2, 1, '2025-11-04 07:30:00', 3, 2, "Me sinto revigorada."),   -- RESPIRAÇÃO PROFUNDA (3rd time)
+
+(2, 4, '2025-10-27 19:00:00', 6, 4, "Relaxei completamente."),   -- RELAXAMENTO MUSCULAR
+(2, 4, '2025-11-02 18:00:00', 5, 3, "Aliviou dor nas mãos."),   -- RELAXAMENTO MUSCULAR (2nd time)
+
+(2, 5, '2025-10-29 15:00:00', 4, 2, "Calor reconfortante."),   -- TOQUE CALMANTE
+(2, 5, '2025-11-03 16:30:00', 5, 3, "Usei óleo morno, ficou ótimo."),   -- TOQUE CALMANTE (2nd time)
+(2, 5, '2025-11-06 14:00:00', 4, 2, "Sempre me ajuda."),   -- TOQUE CALMANTE (3rd time)
+
+(2, 3, '2025-11-01 12:00:00', 3, 1, "Alívio instantâneo."),   -- SUSPIRO DE ALÍVIO
+(2, 3, '2025-11-05 13:00:00', 4, 2, "Rápido e eficaz.");   -- SUSPIRO DE ALÍVIO (2nd time)
+
 -- ------------------------------
 -- Educative History Inserts
 -- ------------------------------
