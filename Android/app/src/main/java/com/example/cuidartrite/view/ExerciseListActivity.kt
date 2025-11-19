@@ -15,7 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ExerciseListActivity: AppCompatActivity() {
+class ExerciseListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityExerciseListBinding
 
@@ -29,15 +29,16 @@ class ExerciseListActivity: AppCompatActivity() {
         binding.tvTitle.text = techiniqueType.title
 
         lifecycleScope.launch(Dispatchers.IO) {
+            Log.d("Exercise List Activity", techiniqueType.id.toString())
             val response = ApiTecnicaController().listarTecnicas(techiniqueType)
 
-            if (response == null) {
-                Toasty.error(this@ExerciseListActivity, "Falha ao carregar a lista de exercício", Toasty.LENGTH_SHORT, true)
-                return@launch
-            }
-            Log.d("Exercise List Activity", response.toString())
-
             withContext(Dispatchers.Main) {
+                if (response == null) {
+                    Toasty.error(this@ExerciseListActivity, "Falha ao carregar a lista de exercício", Toasty.LENGTH_SHORT, true).show()
+                    return@withContext
+                }
+                Log.d("Exercise List Activity", response.toString())
+
 
                 if (response.isEmpty()) {
                     binding.tvWarningEmpty.visibility = VISIBLE
