@@ -35,7 +35,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:animateLayoutChanges="true"
             android:paddingVertical="6dp">
 
@@ -100,9 +100,18 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/headerLayout"
-                app:layout_constraintVertical_bias="1.0"
-                tools:layout_editor_absoluteX="0dp"
+                app:layout_constraintVertical_bias="0"
                 tools:listitem="@layout/progress_and_sensation_daily_item" />
+
+            <TextView
+                android:id="@+id/tvHistoricoVazio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Histórico de técnicas vazio"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -2,10 +2,11 @@ package com.example.cuidartrite.network.api.controller
 
 import android.util.Log
 import com.example.cuidartrite.enums.TechiniqueType
+import com.example.cuidartrite.network.api.RetrofitProvider
 import com.example.cuidartrite.network.api.service.TecnicaService
 import com.example.cuidartrite.network.models.RegistrarAtividadeRequest
 import com.example.cuidartrite.network.models.TecnicaDetalheResponse
-import com.example.cuidartrite.network.api.RetrofitProvider
+import com.example.cuidartrite.network.models.TecnicaResumidaDetalheRespose
 
 class ApiTecnicaController {
 
@@ -25,6 +26,17 @@ class ApiTecnicaController {
             service.listarTecnicas(tipoId.id)
         } catch (e: Exception) {
             Log.e("ApiListaTecnicaController", "Erro ao buscar técnicas: ${e.message}", e)
+            null
+        }
+    }
+
+
+    suspend fun listarTecnicasResumidas(userId: Int): List<TecnicaResumidaDetalheRespose>? {
+        val service = RetrofitProvider.getRetrofit().create(TecnicaService::class.java)
+        return try {
+            service.listarTecnicasResumido(userId)
+        } catch (e: Exception) {
+            Log.e("ApiListaTecnicaController", "Erro ao buscar técnicas Resumidas: ${e.message}", e)
             null
         }
     }

@@ -33,14 +33,14 @@
         <activity android:name=".view.ReliefTechiniquesActivity" />
         <activity android:name=".view.AddPainAssessmentActivity" />
         <activity android:name=".view.AgendaActivity" />
+        <activity android:name=".view.LoginActivity" />
+        <activity android:name=".view.ProgressSensationDetailActivity" />
+        <activity android:name=".view.ExerciseListActivity" />
 
         <receiver
             android:name=".view.ExerciseNotificationReceiver"
             android:enabled="true"
             android:exported="false" />
-        <activity android:name=".view.LoginActivity" />
-        <activity android:name=".view.ProgressSensationDatailActivity" />
-        <activity android:name=".view.ExerciseListActivity" />
 
     </application>
 

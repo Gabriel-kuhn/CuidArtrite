@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.cuidartrite.constants.ConstantsExtra
+import com.example.cuidartrite.constants.ConstantsExtra.Companion.EXTRA_USER
 import com.example.cuidartrite.databinding.ActivityHomeBinding
 import com.example.cuidartrite.datastore.UserDataStore
 import com.example.cuidartrite.network.models.User
@@ -20,7 +20,7 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.getRoot())
 
-        user = intent.extras!!.getParcelable(ConstantsExtra.Companion.EXTRA_USER)
+        user = intent.extras!!.getParcelable(EXTRA_USER)
 
         binding.tvUserName.text = user!!.nome
 
@@ -31,6 +31,7 @@ class HomeActivity : AppCompatActivity() {
 
         binding.btnReliefTechniques.setOnClickListener { v: View? ->
             val intent = Intent(this, ReliefTechiniquesActivity::class.java)
+            intent.putExtra(EXTRA_USER, user)
             startActivity(intent)
         }
 

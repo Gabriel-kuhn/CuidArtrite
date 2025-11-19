@@ -2,6 +2,7 @@ package com.example.cuidartrite.network.api.service
 
 import com.example.cuidartrite.network.models.RegistrarAtividadeRequest
 import com.example.cuidartrite.network.models.TecnicaDetalheResponse
+import com.example.cuidartrite.network.models.TecnicaResumidaDetalheRespose
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -21,6 +22,12 @@ interface TecnicaService {
     suspend fun listarTecnicas(
         @Path("tipo_id") tipoId: Int
     ): List<TecnicaDetalheResponse>
+
+    @Headers("Content-Type: application/json", "Accept: application/json")
+    @GET("resumo-tecnicas/{tipo_id}")
+    suspend fun listarTecnicasResumido(
+        @Path("tipo_id") userId: Int
+    ): List<TecnicaResumidaDetalheRespose>
 
     @Headers("Content-Type: application/json", "Accept: application/json")
     @POST("tecnica/{id}/registrar-atividade")
