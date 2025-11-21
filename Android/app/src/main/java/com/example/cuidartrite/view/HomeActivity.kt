@@ -26,6 +26,7 @@ class HomeActivity : AppCompatActivity() {
 
         binding.btnPainAssessment.setOnClickListener { v: View? ->
             val intent = Intent(this, PainAssessmentActivity::class.java)
+            intent.putExtra(EXTRA_USER, user)
             startActivity(intent)
         }
 

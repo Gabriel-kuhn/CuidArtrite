@@ -3,32 +3,38 @@ package com.example.cuidartrite.view
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cuidartrite.constants.ConstantsExtra.Companion.EXTRA_USER
 import com.example.cuidartrite.databinding.ActivityPainAssessmentBinding
+import com.example.cuidartrite.network.api.controller.ApiPainAssessmentController
+import com.example.cuidartrite.network.models.User
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
-import kotlin.math.roundToInt
 
 data class PainData(val date: Date, val value: Float)
 
 class PainAssessmentActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPainAssessmentBinding
-
-    // Fake source (in real app, troque por dados reais)
-    private val allPainData: List<PainData> by lazy { generateFakePainData() }
+    private lateinit var user: User
+    private val allPainData: List<PainData> by lazy { runBlocking { generateFakePainData() } }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPainAssessmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        user = intent.extras!!.getParcelable(EXTRA_USER)!!
 
         configureChartAppearance()
         showLast7Days()
@@ -38,7 +44,7 @@ class PainAssessmentActivity : AppCompatActivity() {
         binding.btnMonth.setOnClickListener { showByMonth() }
 
         binding.fabAddPain.setOnClickListener {
-            startActivity(Intent(this,AddPainAssessmentActivity::class.java))
+            startActivity(Intent(this, AddPainAssessmentActivity::class.java))
         }
     }
 
@@ -102,7 +108,6 @@ class PainAssessmentActivity : AppCompatActivity() {
     }
 
 
-
     // ====== Views: Últimos 7 dias ============================================================= ||
 
     private fun showLast7Days() {
@@ -121,7 +126,8 @@ class PainAssessmentActivity : AppCompatActivity() {
 
         last7Days.forEachIndexed { index, dayDate ->
             val key = sdfKey.format(dayDate)
-            val weekdayLabel = sdfWeekDay.format(dayDate).replaceFirstChar { it.uppercaseChar() } // Seg, Ter...
+            val weekdayLabel =
+                sdfWeekDay.format(dayDate).replaceFirstChar { it.uppercaseChar() } // Seg, Ter...
 
 
             val valuesToday = allPainData.filter { sdfKey.format(it.date) == key }.map { it.value }
@@ -134,7 +140,6 @@ class PainAssessmentActivity : AppCompatActivity() {
 
         updateChart(entries, labels, "Últimos 7 dias (média diária)")
     }
-
 
 
     // ====== Agrupar por semana (média) ======================================================== ||
@@ -217,7 +222,6 @@ class PainAssessmentActivity : AppCompatActivity() {
     }
 
 
-
     // ====== Agrupar por mês (média) =========================================================== ||
 
     private fun showByMonth() {
@@ -279,28 +283,15 @@ class PainAssessmentActivity : AppCompatActivity() {
     }
 
 
-
-
-
-
-
     // Fake data generator (últimos 90 dias, aleatório)
 
-    private fun generateFakePainData(): List<PainData> {
-        val list = mutableListOf<PainData>()
-        val cal = Calendar.getInstance()
-        // gerar dados dos últimos 90 dias com alguns dias sem registro
-        for (i in 0..89) {
-            val chanceHasData = (Math.random() > 0.3) // ~70% chance de ter dado naquele dia
-            if (chanceHasData) {
-                cal.time = Date()
-                cal.add(Calendar.DAY_OF_YEAR, -i)
-                val value = (Math.random() * 10).toFloat() // escala 0..10
-                list.add(PainData(cal.time, (value * 10).roundToInt() / 10f)) // round 1 decimal
+    private suspend fun generateFakePainData(): List<PainData> {
+        user.id?.let {
+            withContext(Dispatchers.IO) {
+                return@withContext ApiPainAssessmentController().listarDoresDiarias(it)
             }
         }
-        // pode embaralhar (não obrigatório)
-        list.sortBy { it.date.time } // garantir ordem cronológica
-        return list
+
+        return emptyList()
     }
 }
