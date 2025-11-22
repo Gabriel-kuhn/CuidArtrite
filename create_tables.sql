@@ -150,31 +150,32 @@ INSERT INTO educative_content (title, body) VALUES
 -- ------------------------------
 -- technique type Inserts
 -- ------------------------------
-INSERT INTO technique_type (name) VALUES ('Técnicas de alívio'); -- id 1
+INSERT INTO technique_type (name) VALUES ('Alongamentos guiados'); -- id 1
 
-INSERT INTO technique_type (name) VALUES ('Alongamentos guiados'); -- id 2
-
-INSERT INTO technique_type (name) VALUES ('Técnicas de respiração'); -- id 3
+INSERT INTO technique_type (name) VALUES ('Técnicas de respiração'); -- id 2
 
 -- ------------------------------
 -- techniques Inserts
 -- ------------------------------
 
 INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id) VALUES
-('RESPIRAÇÃO PROFUNDA', '5 minutos', 'Reduz tensão e ansiedade', '1. Sente-se confortavelmente ou deite 2. Coloque uma mão na barriga 3. Inspire pelo nariz contando até 4 4. Sinta a barriga subir (não o peito) 5. Expire pela boca contando até 6 6. Repita 10 vezes', 'Faça antes de dormir', 3);
+('RESPIRAÇÃO PROFUNDA', '5 minutos', 'Reduz tensão e ansiedade', '1. Sente-se confortavelmente ou deite 2. Coloque uma mão na barriga 3. Inspire pelo nariz contando até 4 4. Sinta a barriga subir (não o peito) 5. Expire pela boca contando até 6 6. Repita 10 vezes', 'Faça antes de dormir', 2);
 
 INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id) VALUES
-('RESPIRAÇÃO 4-7-8', '3-5 minutos', 'Acalma e melhora o sono', '1. Inspire pelo nariz: conte até 4 2. Segure o ar: conte até 7 3. Expire pela boca: conte até 8 4. Faça 4 ciclos completos', 'Pode dar leve tontura no início - é normal', 3);
+('RESPIRAÇÃO 4-7-8', '3-5 minutos', 'Acalma e melhora o sono', '1. Inspire pelo nariz: conte até 4 2. Segure o ar: conte até 7 3. Expire pela boca: conte até 8 4. Faça 4 ciclos completos', 'Pode dar leve tontura no início - é normal', 2);
 
 INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id) VALUES
-('SUSPIRO DE ALÍVIO', '2 minutos', 'Libera tensão rápida', '1. Inspire profundamente pelo nariz 2. Solte o ar pela boca com um suspiro sonoro 3. Deixe os ombros caírem 4. Repita 5 vezes "Aaaah..." - solte o som!', NULL, 3);
+('SUSPIRO DE ALÍVIO', '2 minutos', 'Libera tensão rápida', '1. Inspire profundamente pelo nariz 2. Solte o ar pela boca com um suspiro sonoro 3. Deixe os ombros caírem 4. Repita 5 vezes "Aaaah..." - solte o som!', NULL, 2);
 
 INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id) VALUES
-('RELAXAMENTO MUSCULAR', '10-15 minutos', 'Alivia tensão e dor muscular', '1. Deite-se confortavelmente 2. Comece pelos pés: - Contraia os músculos por 5 segundos - Relaxe completamente por 10 segundos 3. Suba pelo corpo: - Panturrilhas - Coxas - Barriga - Mãos e braços - Ombros - Rosto', 'Não force articulações doloridas [Áudio guiado disponível]', 3);
+('RELAXAMENTO MUSCULAR', '10-15 minutos', 'Alivia tensão e dor muscular', '1. Deite-se confortavelmente 2. Comece pelos pés: - Contraia os músculos por 5 segundos - Relaxe completamente por 10 segundos 3. Suba pelo corpo: - Panturrilhas - Coxas - Barriga - Mãos e braços - Ombros - Rosto', 'Não force articulações doloridas [Áudio guiado disponível]', 2);
 
 INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id) VALUES
-('TOQUE CALMANTE', '5 minutos', 'Conforto imediato', '1. Esfregue as mãos até aquecer 2. Coloque as mãos nos locais doloridos 3. Faça movimentos circulares suaves 4. Respire profundamente 5. Imagine o calor aliviando a dor', 'Pode usar óleo morno', 3);
+('TOQUE CALMANTE', '5 minutos', 'Conforto imediato', '1. Esfregue as mãos até aquecer 2. Coloque as mãos nos locais doloridos 3. Faça movimentos circulares suaves 4. Respire profundamente 5. Imagine o calor aliviando a dor', 'Pode usar óleo morno', 2);
 
+INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id)
+VALUES
+('Alongamento de Mãos', '5 minutos', 'Rigidez matinal', '1. Sente-se confortavelmente 2. Abra as mãos devagar 3. Feche formando punho suave 4. Repita 10 vezes 5. Descanse', 'Pare se sentir dor forte', 1);
 -- ------------------------------
 -- Users Inserts
 -- ------------------------------
@@ -186,11 +187,11 @@ VALUES
 -- ------------------------------
 -- Pain Assessment Inserts
 -- ------------------------------
-INSERT INTO pain_assessment (user_id, pain_scale, graphic_scale, localized_pain, date)
+INSERT INTO pain_assessment (user_id, pain_scale, localized_pain, date)
 VALUES
-(1, 3, 'Moderado', 'Joelhos', '2025-10-25 10:00:00'),
-(1, 4, 'Forte', 'Coluna', '2025-10-26 15:30:00'),
-(2, 5, 'Muito forte', 'Mãos e dedos', '2025-10-25 09:00:00');
+(1, 3, 'Joelhos', '2025-10-25 10:00:00'),
+(1, 4, 'Coluna', '2025-10-26 15:30:00'),
+(2, 5, 'Mãos e dedos', '2025-10-25 09:00:00');
 
 -- ------------------------------
 -- Technique History Inserts
@@ -199,7 +200,7 @@ INSERT INTO technique_history (user_id, technique_id, date, initial_pain_scale, 
 VALUES
 (1, 1, '2025-10-25 10:15:00', 3, 2, "Não senti dor alguma."),   -- Fernando did RESPIRAÇÃO PROFUNDA
 (1, 4, '2025-10-26 16:00:00', 4, 2, "Senti muita dor."),   -- Fernando did RELAXAMENTO MUSCULAR
-(2, 2, '2025-10-25 09:15:00', 5, 3, "Não senti dor.");   -- Maria did RESPIRAÇÃO 4-7-8
+(2, 2, '2025-10-25 09:15:00', 5, 3, "Não senti dor."),   -- Maria did RESPIRAÇÃO 4-7-8
 
 -- User 1 (Marcos) - Multiple practices over time
 (1, 1, '2025-10-25 10:15:00', 3, 2, "Não senti dor alguma."),   -- RESPIRAÇÃO PROFUNDA
