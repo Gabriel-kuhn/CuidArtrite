@@ -159,39 +159,39 @@ INSERT INTO technique_type (name) VALUES ('Técnicas de respiração'); -- id 2
 -- ------------------------------
 
 INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id) VALUES
-('RESPIRAÇÃO PROFUNDA', '5 minutos', 'Reduz tensão e ansiedade', '1. Sente-se confortavelmente ou deite 2. Coloque uma mão na barriga 3. Inspire pelo nariz contando até 4 4. Sinta a barriga subir (não o peito) 5. Expire pela boca contando até 6 6. Repita 10 vezes', 'Faça antes de dormir', 2);
+('RESPIRAÇÃO PROFUNDA', '5 minutos', 'Reduz tensão e ansiedade', '1. Sente-se confortavelmente ou deite 2. Coloque uma mão na barriga 3. Inspire pelo nariz contando até 4 4. Sinta a barriga subir (não o peito) 5. Expire pela boca contando até 6 6. Repita 10 vezes', 'Faça antes de dormir', 2); --ID = 1
 
 INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id) VALUES
-('RESPIRAÇÃO 4-7-8', '3-5 minutos', 'Acalma e melhora o sono', '1. Inspire pelo nariz: conte até 4 2. Segure o ar: conte até 7 3. Expire pela boca: conte até 8 4. Faça 4 ciclos completos', 'Pode dar leve tontura no início - é normal', 2);
+('RESPIRAÇÃO 4-7-8', '3-5 minutos', 'Acalma e melhora o sono', '1. Inspire pelo nariz: conte até 4 2. Segure o ar: conte até 7 3. Expire pela boca: conte até 8 4. Faça 4 ciclos completos', 'Pode dar leve tontura no início - é normal', 2);--ID = 2
 
 INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id) VALUES
-('SUSPIRO DE ALÍVIO', '2 minutos', 'Libera tensão rápida', '1. Inspire profundamente pelo nariz 2. Solte o ar pela boca com um suspiro sonoro 3. Deixe os ombros caírem 4. Repita 5 vezes "Aaaah..." - solte o som!', NULL, 2);
+('SUSPIRO DE ALÍVIO', '2 minutos', 'Libera tensão rápida', '1. Inspire profundamente pelo nariz 2. Solte o ar pela boca com um suspiro sonoro 3. Deixe os ombros caírem 4. Repita 5 vezes "Aaaah..." - solte o som!', NULL, 2);--ID = 3
 
 INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id) VALUES
-('RELAXAMENTO MUSCULAR', '10-15 minutos', 'Alivia tensão e dor muscular', '1. Deite-se confortavelmente 2. Comece pelos pés: - Contraia os músculos por 5 segundos - Relaxe completamente por 10 segundos 3. Suba pelo corpo: - Panturrilhas - Coxas - Barriga - Mãos e braços - Ombros - Rosto', 'Não force articulações doloridas [Áudio guiado disponível]', 2);
+('RELAXAMENTO MUSCULAR', '10-15 minutos', 'Alivia tensão e dor muscular', '1. Deite-se confortavelmente 2. Comece pelos pés: - Contraia os músculos por 5 segundos - Relaxe completamente por 10 segundos 3. Suba pelo corpo: - Panturrilhas - Coxas - Barriga - Mãos e braços - Ombros - Rosto', 'Não force articulações doloridas [Áudio guiado disponível]', 2);--ID = 4
 
 INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id) VALUES
-('TOQUE CALMANTE', '5 minutos', 'Conforto imediato', '1. Esfregue as mãos até aquecer 2. Coloque as mãos nos locais doloridos 3. Faça movimentos circulares suaves 4. Respire profundamente 5. Imagine o calor aliviando a dor', 'Pode usar óleo morno', 2);
+('TOQUE CALMANTE', '5 minutos', 'Conforto imediato', '1. Esfregue as mãos até aquecer 2. Coloque as mãos nos locais doloridos 3. Faça movimentos circulares suaves 4. Respire profundamente 5. Imagine o calor aliviando a dor', 'Pode usar óleo morno', 2);--ID = 5
 
 INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id)
 VALUES
-('Alongamento de Mãos', '5 minutos', 'Rigidez matinal', '1. Sente-se confortavelmente 2. Abra as mãos devagar 3. Feche formando punho suave 4. Repita 10 vezes 5. Descanse', 'Pare se sentir dor forte', 1);
+('Alongamento de Mãos', '5 minutos', 'Rigidez matinal', '1. Sente-se confortavelmente 2. Abra as mãos devagar 3. Feche formando punho suave 4. Repita 10 vezes 5. Descanse', 'Pare se sentir dor forte', 1);--ID = 6
 
 INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id)
 VALUES
-('Alongamento de Pescoço', '3 minutos', 'Tensão acumulada no pescoço e ombros', '1. Sente-se ereto 2. Incline lentamente a cabeça para a direita 3. Segure por 15 segundos 4. Repita para a esquerda 5. Faça leves rotações', 'Evite movimentos bruscos', 1);
+('Alongamento de Pescoço', '3 minutos', 'Tensão acumulada no pescoço e ombros', '1. Sente-se ereto 2. Incline lentamente a cabeça para a direita 3. Segure por 15 segundos 4. Repita para a esquerda 5. Faça leves rotações', 'Evite movimentos bruscos', 1);--ID = 7
 
 INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id)
 VALUES
-('Alongamento de Costas', '4 minutos', 'Alívio de rigidez lombar', '1. Fique em pé 2. Entrelace as mãos à frente 3. Empurre levemente as costas para trás 4. Mantenha por 20 segundos 5. Repita 3 vezes', 'Não force a coluna além do confortável', 1);
+('Alongamento de Costas', '4 minutos', 'Alívio de rigidez lombar', '1. Fique em pé 2. Entrelace as mãos à frente 3. Empurre levemente as costas para trás 4. Mantenha por 20 segundos 5. Repita 3 vezes', 'Não force a coluna além do confortável', 1);--ID = 8
 
 INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id)
 VALUES
-('Alongamento de Pernas', '6 minutos', 'Melhora da circulação e mobilidade', '1. Sente-se no chão 2. Estenda as pernas 3. Incline o tronco para frente 4. Segure os pés ou tornozelos 5. Mantenha por 30 segundos', 'Mantenha a coluna reta durante o movimento', 1);
+('Alongamento de Pernas', '6 minutos', 'Melhora da circulação e mobilidade', '1. Sente-se no chão 2. Estenda as pernas 3. Incline o tronco para frente 4. Segure os pés ou tornozelos 5. Mantenha por 30 segundos', 'Mantenha a coluna reta durante o movimento', 1);--ID = 9
 
 INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id)
 VALUES
-('Alongamento de Ombros', '4 minutos', 'Redução de tensão nos ombros', '1. Fique em pé 2. Leve o braço direito à frente do peito 3. Use o braço esquerdo para puxar suavemente 4. Segure 20 segundos 5. Repita com o outro braço', 'Respire fundo durante todo o alongamento', 1);
+('Alongamento de Ombros', '4 minutos', 'Redução de tensão nos ombros', '1. Fique em pé 2. Leve o braço direito à frente do peito 3. Use o braço esquerdo para puxar suavemente 4. Segure 20 segundos 5. Repita com o outro braço', 'Respire fundo durante todo o alongamento', 1);--ID = 10
 -- ------------------------------
 -- Users Inserts
 -- ------------------------------
@@ -255,6 +255,24 @@ VALUES
 
 (2, 3, '2025-11-01 12:00:00', 3, 1, "Alívio instantâneo."),   -- SUSPIRO DE ALÍVIO
 (2, 3, '2025-11-05 13:00:00', 4, 2, "Rápido e eficaz.");   -- SUSPIRO DE ALÍVIO (2nd time)
+
+INSERT INTO technique_history (user_id, technique_id, date, initial_pain_scale, final_pain_scale, sensation_description)
+VALUES
+-- User 1 (Marcos) - Techniques 6 through 10
+(1, 6, '2025-11-08 17:00:00', 4, 3, 'Sentimento de paz, a dor diminuiu lentamente.'), -- Technique 6
+(1, 7, '2025-11-10 11:30:00', 5, 2, 'A sensação foi de anestsia na área.'), -- Technique 7
+(1, 8, '2025-11-14 19:45:00', 6, 4, 'Foco total no objeto, esquecendo a dor.'), -- Technique 8
+(1, 9, '2025-11-17 09:00:00', 3, 1, 'Movimentos leves aliviaram a rigidez.'), -- Technique 9
+(1, 10, '2025-11-21 20:30:00', 7, 5, 'Repeti a técnica, mais eficaz desta vez.'), -- Technique 10
+(1, 6, '2025-11-23 11:00:00', 5, 3, 'Repeti a técnica, mais eficaz desta vez.'), -- Technique 6 (2nd time)
+
+-- User 2 (Maria) - Techniques 6 through 10
+(2, 6, '2025-11-09 14:00:00', 5, 4, 'Um pouco difícil manter o foco, mas ajudou.'), -- Technique 6
+(2, 7, '2025-11-11 15:30:00', 6, 3, 'Alívio imediato com o frio concentrado.'), -- Technique 7
+(2, 8, '2025-11-15 10:45:00', 4, 2, 'Repeti a técnica, mais eficaz desta vez.'), -- Technique 8
+(2, 9, '2025-11-18 16:30:00', 5, 3, 'Ainda sinto um pouco de dor, mas a mobilidade melhorou.'), -- Technique 9
+(2, 10, '2025-11-22 19:00:00', 6, 4, 'Técnica boa para relaxar antes de dormir.'), -- Technique 10
+(2, 7, '2025-11-23 12:30:00', 5, 2, 'Repeti a técnica, mais eficaz desta vez.'); -- Technique 7 (2nd time)
 
 -- ------------------------------
 -- Educative History Inserts
