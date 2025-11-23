@@ -176,6 +176,22 @@ INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_typ
 INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id)
 VALUES
 ('Alongamento de Mãos', '5 minutos', 'Rigidez matinal', '1. Sente-se confortavelmente 2. Abra as mãos devagar 3. Feche formando punho suave 4. Repita 10 vezes 5. Descanse', 'Pare se sentir dor forte', 1);
+
+INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id)
+VALUES
+('Alongamento de Pescoço', '3 minutos', 'Tensão acumulada no pescoço e ombros', '1. Sente-se ereto 2. Incline lentamente a cabeça para a direita 3. Segure por 15 segundos 4. Repita para a esquerda 5. Faça leves rotações', 'Evite movimentos bruscos', 1);
+
+INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id)
+VALUES
+('Alongamento de Costas', '4 minutos', 'Alívio de rigidez lombar', '1. Fique em pé 2. Entrelace as mãos à frente 3. Empurre levemente as costas para trás 4. Mantenha por 20 segundos 5. Repita 3 vezes', 'Não force a coluna além do confortável', 1);
+
+INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id)
+VALUES
+('Alongamento de Pernas', '6 minutos', 'Melhora da circulação e mobilidade', '1. Sente-se no chão 2. Estenda as pernas 3. Incline o tronco para frente 4. Segure os pés ou tornozelos 5. Mantenha por 30 segundos', 'Mantenha a coluna reta durante o movimento', 1);
+
+INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id)
+VALUES
+('Alongamento de Ombros', '4 minutos', 'Redução de tensão nos ombros', '1. Fique em pé 2. Leve o braço direito à frente do peito 3. Use o braço esquerdo para puxar suavemente 4. Segure 20 segundos 5. Repita com o outro braço', 'Respire fundo durante todo o alongamento', 1);
 -- ------------------------------
 -- Users Inserts
 -- ------------------------------
