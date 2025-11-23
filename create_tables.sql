@@ -208,6 +208,14 @@ VALUES
 (1, 3, 'Joelhos', '2025-10-25 10:00:00'),
 (1, 4, 'Coluna', '2025-10-26 15:30:00'),
 (2, 5, 'Mãos e dedos', '2025-10-25 09:00:00');
+-- Marcos - Uma semana completa de registros (Segunda a Domingo)
+(1, 4, 'Joelhos', '2025-11-04 08:00:00'),      -- Segunda-feira
+(1, 3, 'Mãos', '2025-11-05 08:30:00'),         -- Terça-feira
+(1, 5, 'Coluna', '2025-11-06 09:00:00'),       -- Quarta-feira
+(1, 3, 'Joelhos', '2025-11-07 08:15:00'),      -- Quinta-feira
+(1, 2, 'Ombros', '2025-11-08 07:45:00'),       -- Sexta-feira
+(1, 4, 'Joelhos e Coluna', '2025-11-09 10:00:00'),  -- Sábado
+(1, 3, 'Mãos e Punhos', '2025-11-10 09:30:00'),     -- Domingo
 
 -- ------------------------------
 -- Technique History Inserts
