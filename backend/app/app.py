@@ -334,6 +334,74 @@ def get_technique_history(id):
             json.dumps({"error": f"Erro interno no servidor: {str(e)}"}, ensure_ascii=False),
             content_type="application/json; charset=utf-8"
         ), 500
+    
+@app.route("/historico-tecnica", methods=["GET"])
+def get_specific_technique_history():
+    try:
+        # Get JSON data from request
+        data = request.get_json()
+        
+        fields = ["user_id", "technique_id"]
+
+        if not data:
+            return Response(
+                json.dumps({"error": "Os dados da requisição são obrigatórios"}, ensure_ascii=False),
+                content_type="application/json; charset=utf-8"
+            ), 400
+        
+        for field in fields:
+            if field not in data or data[field] in [None, ""]:
+                return Response(
+                    json.dumps({"error": f"O campo '{field}' é obrigatório"}, ensure_ascii=False),
+                    content_type="application/json; charset=utf-8"
+                ), 400
+
+        user_id = data['user_id']
+        technique_id = data['technique_id']
+
+        cursor = conn.cursor(dictionary=True)
+        query = """
+        SELECT th.id, th.date, th.initial_pain_scale, th.final_pain_scale, th.sensation_description, t.title
+        FROM technique_history AS th
+        INNER JOIN technique AS t
+        ON th.technique_id = t.id
+        INNER JOIN technique_type AS tt 
+        ON t.technique_type_id = tt.id
+        WHERE th.user_id = %s and t.id = %s
+        ORDER BY th.date DESC
+        """
+        cursor.execute(query, (user_id,technique_id))
+        records = cursor.fetchall()
+        cursor.close()
+
+        if not records:
+            return Response(
+                json.dumps({"error": "Histórico de técnicas não encontrado para o usuário."}, ensure_ascii=False),
+                content_type="application/json; charset=utf-8"
+            ), 404
+
+        # Format response
+        result = []
+        for record in records:
+            result.append({
+                "id": record["id"],
+                "titulo_tecnica": record["title"],
+                "data": record["date"].strftime("%Y-%m-%d") if record["date"] else None,
+                "nivel_dor_antes": record["initial_pain_scale"],
+                "nivel_dor_depois": record["final_pain_scale"],
+                "sensacao": record["sensation_description"],
+            })
+
+        return Response(
+            json.dumps(result, ensure_ascii=False),
+            content_type="application/json; charset=utf-8"
+        ), 200
+
+    except Exception as e:
+        return Response(
+            json.dumps({"error": f"Erro interno no servidor: {str(e)}"}, ensure_ascii=False),
+            content_type="application/json; charset=utf-8"
+        ), 500
 
 @app.route("/registra-dor-diaria", methods=["POST"])
 def registra_dor_diaria():
