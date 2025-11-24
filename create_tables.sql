@@ -158,40 +158,40 @@ INSERT INTO technique_type (name) VALUES ('Técnicas de respiração'); # id 2
 # techniques Inserts
 # ###############
 
-INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id) VALUES
-('RESPIRAÇÃO PROFUNDA', '5 minutos', 'Reduz tensão e ansiedade', '1. Sente-se confortavelmente ou deite 2. Coloque uma mão na barriga 3. Inspire pelo nariz contando até 4 4. Sinta a barriga subir (não o peito) 5. Expire pela boca contando até 6 6. Repita 10 vezes', 'Faça antes de dormir', 2); #ID = 1
+INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id, video_url) VALUES
+('RESPIRAÇÃO PROFUNDA', '5 minutos', 'Reduz tensão e ansiedade', '1. Sente-se confortavelmente ou deite 2. Coloque uma mão na barriga 3. Inspire pelo nariz contando até 4 4. Sinta a barriga subir (não o peito) 5. Expire pela boca contando até 6 6. Repita 10 vezes', 'Faça antes de dormir', 2, 'https://www.youtube.com/watch?v=_iQfblkbUJ4'); #ID = 1
 
-INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id) VALUES
-('RESPIRAÇÃO 4-7-8', '3-5 minutos', 'Acalma e melhora o sono', '1. Inspire pelo nariz: conte até 4 2. Segure o ar: conte até 7 3. Expire pela boca: conte até 8 4. Faça 4 ciclos completos', 'Pode dar leve tontura no início - é normal', 2);#ID = 2
+INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id, video_url) VALUES
+('RESPIRAÇÃO 4-7-8', '3-5 minutos', 'Acalma e melhora o sono', '1. Inspire pelo nariz: conte até 4 2. Segure o ar: conte até 7 3. Expire pela boca: conte até 8 4. Faça 4 ciclos completos', 'Pode dar leve tontura no início - é normal', 2, 'https://www.youtube.com/watch?v=_iQfblkbUJ4');#ID = 2
 
-INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id) VALUES
-('SUSPIRO DE ALÍVIO', '2 minutos', 'Libera tensão rápida', '1. Inspire profundamente pelo nariz 2. Solte o ar pela boca com um suspiro sonoro 3. Deixe os ombros caírem 4. Repita 5 vezes "Aaaah..." - solte o som!', NULL, 2);#ID = 3
+INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id, video_url) VALUES
+('SUSPIRO DE ALÍVIO', '2 minutos', 'Libera tensão rápida', '1. Inspire profundamente pelo nariz 2. Solte o ar pela boca com um suspiro sonoro 3. Deixe os ombros caírem 4. Repita 5 vezes "Aaaah..." - solte o som!', NULL, 2, 'https://www.youtube.com/watch?v=_iQfblkbUJ4');#ID = 3
 
-INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id) VALUES
-('RELAXAMENTO MUSCULAR', '10-15 minutos', 'Alivia tensão e dor muscular', '1. Deite-se confortavelmente 2. Comece pelos pés: - Contraia os músculos por 5 segundos - Relaxe completamente por 10 segundos 3. Suba pelo corpo: - Panturrilhas - Coxas - Barriga - Mãos e braços - Ombros - Rosto', 'Não force articulações doloridas [Áudio guiado disponível]', 2);#ID = 4
+INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id, video_url) VALUES
+('RELAXAMENTO MUSCULAR', '10-15 minutos', 'Alivia tensão e dor muscular', '1. Deite-se confortavelmente 2. Comece pelos pés: - Contraia os músculos por 5 segundos - Relaxe completamente por 10 segundos 3. Suba pelo corpo: - Panturrilhas - Coxas - Barriga - Mãos e braços - Ombros - Rosto', 'Não force articulações doloridas [Áudio guiado disponível]', 2, 'https://www.youtube.com/watch?v=H1OtvFPULcQ');#ID = 4
 
-INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id) VALUES
-('TOQUE CALMANTE', '5 minutos', 'Conforto imediato', '1. Esfregue as mãos até aquecer 2. Coloque as mãos nos locais doloridos 3. Faça movimentos circulares suaves 4. Respire profundamente 5. Imagine o calor aliviando a dor', 'Pode usar óleo morno', 2);#ID = 5
+INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id, video_url) VALUES
+('TOQUE CALMANTE', '5 minutos', 'Conforto imediato', '1. Esfregue as mãos até aquecer 2. Coloque as mãos nos locais doloridos 3. Faça movimentos circulares suaves 4. Respire profundamente 5. Imagine o calor aliviando a dor', 'Pode usar óleo morno', 2, 'https://www.youtube.com/watch?v=H1OtvFPULcQ');#ID = 5
 
-INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id)
+INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id, video_url)
 VALUES
-('Alongamento de Mãos', '5 minutos', 'Rigidez matinal', '1. Sente-se confortavelmente 2. Abra as mãos devagar 3. Feche formando punho suave 4. Repita 10 vezes 5. Descanse', 'Pare se sentir dor forte', 1);#ID = 6
+('Alongamento de Mãos', '5 minutos', 'Rigidez matinal', '1. Sente-se confortavelmente 2. Abra as mãos devagar 3. Feche formando punho suave 4. Repita 10 vezes 5. Descanse', 'Pare se sentir dor forte', 1, 'https://www.youtube.com/watch?v=H1OtvFPULcQ');#ID = 6
 
-INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id)
+INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id, video_url)
 VALUES
-('Alongamento de Pescoço', '3 minutos', 'Tensão acumulada no pescoço e ombros', '1. Sente-se ereto 2. Incline lentamente a cabeça para a direita 3. Segure por 15 segundos 4. Repita para a esquerda 5. Faça leves rotações', 'Evite movimentos bruscos', 1);#ID = 7
+('Alongamento de Pescoço', '3 minutos', 'Tensão acumulada no pescoço e ombros', '1. Sente-se ereto 2. Incline lentamente a cabeça para a direita 3. Segure por 15 segundos 4. Repita para a esquerda 5. Faça leves rotações', 'Evite movimentos bruscos', 1, 'https://www.youtube.com/watch?v=H1OtvFPULcQ');#ID = 7
 
-INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id)
+INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id, video_url)
 VALUES
-('Alongamento de Costas', '4 minutos', 'Alívio de rigidez lombar', '1. Fique em pé 2. Entrelace as mãos à frente 3. Empurre levemente as costas para trás 4. Mantenha por 20 segundos 5. Repita 3 vezes', 'Não force a coluna além do confortável', 1);#ID = 8
+('Alongamento de Costas', '4 minutos', 'Alívio de rigidez lombar', '1. Fique em pé 2. Entrelace as mãos à frente 3. Empurre levemente as costas para trás 4. Mantenha por 20 segundos 5. Repita 3 vezes', 'Não force a coluna além do confortável', 1, 'https://www.youtube.com/watch?v=H1OtvFPULcQ');#ID = 8
 
-INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id)
+INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id, video_url)
 VALUES
-('Alongamento de Pernas', '6 minutos', 'Melhora da circulação e mobilidade', '1. Sente-se no chão 2. Estenda as pernas 3. Incline o tronco para frente 4. Segure os pés ou tornozelos 5. Mantenha por 30 segundos', 'Mantenha a coluna reta durante o movimento', 1);#ID = 9
+('Alongamento de Pernas', '6 minutos', 'Melhora da circulação e mobilidade', '1. Sente-se no chão 2. Estenda as pernas 3. Incline o tronco para frente 4. Segure os pés ou tornozelos 5. Mantenha por 30 segundos', 'Mantenha a coluna reta durante o movimento', 1, 'https://www.youtube.com/watch?v=H1OtvFPULcQ');#ID = 9
 
-INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id)
+INSERT INTO technique (title, how_long, benefits, how_to_do, hint, technique_type_id, video_url)
 VALUES
-('Alongamento de Ombros', '4 minutos', 'Redução de tensão nos ombros', '1. Fique em pé 2. Leve o braço direito à frente do peito 3. Use o braço esquerdo para puxar suavemente 4. Segure 20 segundos 5. Repita com o outro braço', 'Respire fundo durante todo o alongamento', 1);#ID = 10
+('Alongamento de Ombros', '4 minutos', 'Redução de tensão nos ombros', '1. Fique em pé 2. Leve o braço direito à frente do peito 3. Use o braço esquerdo para puxar suavemente 4. Segure 20 segundos 5. Repita com o outro braço', 'Respire fundo durante todo o alongamento', 1, 'https://www.youtube.com/watch?v=H1OtvFPULcQ');#ID = 10
 # ###############
 # Users Inserts
 # ###############
