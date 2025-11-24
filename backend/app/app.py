@@ -10,7 +10,7 @@ app = Flask(__name__)
 conn = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="your_password",
+    password="",
     database="dbCuidArtrite"
 )
 
@@ -335,30 +335,9 @@ def get_technique_history(id):
             content_type="application/json; charset=utf-8"
         ), 500
     
-@app.route("/historico-tecnica", methods=["GET"])
-def get_specific_technique_history():
+@app.route("/historico-tecnica/<int:user_id>/<int:technique_id>", methods=["GET"])
+def get_specific_technique_history(user_id, technique_id):
     try:
-        # Get JSON data from request
-        data = request.get_json()
-        
-        fields = ["user_id", "technique_id"]
-
-        if not data:
-            return Response(
-                json.dumps({"error": "Os dados da requisição são obrigatórios"}, ensure_ascii=False),
-                content_type="application/json; charset=utf-8"
-            ), 400
-        
-        for field in fields:
-            if field not in data or data[field] in [None, ""]:
-                return Response(
-                    json.dumps({"error": f"O campo '{field}' é obrigatório"}, ensure_ascii=False),
-                    content_type="application/json; charset=utf-8"
-                ), 400
-
-        user_id = data['user_id']
-        technique_id = data['technique_id']
-
         cursor = conn.cursor(dictionary=True)
         query = """
         SELECT th.id, th.date, th.initial_pain_scale, th.final_pain_scale, th.sensation_description, t.title
