@@ -59,12 +59,14 @@ class ReliefTechiniquesActivity : AppCompatActivity() {
         binding.cvGuidedStretches.setOnClickListener {
             val intent = Intent(this, ExerciseListActivity::class.java)
             intent.putExtra(EXTRA_TECHINIQUE_TYPE_ID, TechiniqueType.GuidedStretching)
+            intent.putExtra(EXTRA_USER, user)
             startActivity(intent)
         }
 
         binding.cvBreathingTechniques.setOnClickListener {
             val intent = Intent(this, ExerciseListActivity::class.java)
             intent.putExtra(EXTRA_TECHINIQUE_TYPE_ID, TechiniqueType.BreathingTechnique)
+            intent.putExtra(EXTRA_USER, user)
             startActivity(intent)
         }
     }

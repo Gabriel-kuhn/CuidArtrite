@@ -36,6 +36,7 @@
         <activity android:name=".view.LoginActivity" />
         <activity android:name=".view.ProgressSensationDetailActivity" />
         <activity android:name=".view.ExerciseListActivity" />
+        <activity android:name=".view.PracticingTechiniqueActivity" />
 
         <receiver
             android:name=".view.ExerciseNotificationReceiver"
