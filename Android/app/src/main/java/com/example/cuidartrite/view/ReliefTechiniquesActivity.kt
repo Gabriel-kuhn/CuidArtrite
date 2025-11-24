@@ -47,6 +47,7 @@ class ReliefTechiniquesActivity : AppCompatActivity() {
                             this@ReliefTechiniquesActivity,
                             ProgressSensationDetailActivity::class.java
                         )
+                        intent.putExtra(EXTRA_USER, user)
                         intent.putExtra(EXTRA_EXERCISE, item)
                         startActivity(intent)
                     }

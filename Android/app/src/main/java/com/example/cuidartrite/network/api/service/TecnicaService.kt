@@ -1,13 +1,17 @@
 package com.example.cuidartrite.network.api.service
 
+import com.example.cuidartrite.network.models.HistoricoTecnicaDetalheRequest
+import com.example.cuidartrite.network.models.HistoricoTecnicaDetalheResponse
 import com.example.cuidartrite.network.models.RegistrarAtividadeRequest
 import com.example.cuidartrite.network.models.TecnicaDetalheResponse
 import com.example.cuidartrite.network.models.TecnicaResumidaDetalheRespose
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.HTTP
 import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface TecnicaService {
 
@@ -35,4 +39,13 @@ interface TecnicaService {
         @Path("id") id: Int,
         @Body request: RegistrarAtividadeRequest
     ): TecnicaDetalheResponse
+
+
+
+    @GET("historico-tecnica")
+    suspend fun getHistoricoTecnica(
+        @Query("user_id") userId: Int,
+        @Query("technique_id") techniqueId: Int
+    ): List<HistoricoTecnicaDetalheResponse>
+
 }
