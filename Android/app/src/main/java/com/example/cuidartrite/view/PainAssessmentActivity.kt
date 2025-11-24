@@ -3,10 +3,13 @@ package com.example.cuidartrite.view
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cuidartrite.constants.ConstantsExtra.Companion.EXTRA_USER
 import com.example.cuidartrite.databinding.ActivityPainAssessmentBinding
 import com.example.cuidartrite.network.api.controller.ApiPainAssessmentController
 import com.example.cuidartrite.network.models.User
+import com.example.cuidartrite.view.adapter.PainHistoryAdapter
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
@@ -14,6 +17,7 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
@@ -27,7 +31,8 @@ class PainAssessmentActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPainAssessmentBinding
     private lateinit var user: User
-    private val allPainData: List<PainData> by lazy { runBlocking { generateFakePainData() } }
+    private val allPainData = mutableListOf<PainData>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +42,15 @@ class PainAssessmentActivity : AppCompatActivity() {
         user = intent.extras!!.getParcelable(EXTRA_USER)!!
 
         configureChartAppearance()
-        showLast7Days()
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            val data = generatePainData()
+
+            withContext(Dispatchers.Main) {
+                initRecycler(data)
+                updatePainData(data)
+            }
+        }
 
         binding.btnLast7.setOnClickListener { showLast7Days() }
         binding.btnWeek.setOnClickListener { showByWeek() }
@@ -46,6 +59,19 @@ class PainAssessmentActivity : AppCompatActivity() {
         binding.fabAddPain.setOnClickListener {
             startActivity(Intent(this, AddPainAssessmentActivity::class.java))
         }
+    }
+
+    private fun initRecycler(list: List<PainData>) {
+        binding.recyclerPainList.apply {
+            layoutManager = LinearLayoutManager(this@PainAssessmentActivity)
+            adapter = PainHistoryAdapter(list)
+        }
+    }
+
+    private fun updatePainData(list: List<PainData>) {
+        allPainData.clear()
+        allPainData.addAll(list)
+        showLast7Days()
     }
 
 
@@ -282,16 +308,20 @@ class PainAssessmentActivity : AppCompatActivity() {
         updateChart(entries, labels, "Média por mês")
     }
 
+    private suspend fun generatePainData(): List<PainData> {
+        val userId = user.id ?: return emptyList()
 
-    // Fake data generator (últimos 90 dias, aleatório)
+        val apiList = withContext(Dispatchers.IO) {
+            ApiPainAssessmentController().listarDoresDiarias(userId)
+        } ?: return emptyList()
 
-    private suspend fun generateFakePainData(): List<PainData> {
-        user.id?.let {
-            withContext(Dispatchers.IO) {
-                return@withContext ApiPainAssessmentController().listarDoresDiarias(it)
-            }
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+
+        return apiList.map {
+            PainData(
+                date = sdf.parse(it.dia) ?: Date(),
+                value = it.nivelDor.toFloat()
+            )
         }
-
-        return emptyList()
     }
 }

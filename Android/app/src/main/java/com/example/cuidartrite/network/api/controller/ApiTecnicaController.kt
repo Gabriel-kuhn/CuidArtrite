@@ -58,7 +58,7 @@ class ApiTecnicaController {
     suspend fun getHistoricoTecnica(request: HistoricoTecnicaDetalheRequest): List<HistoricoTecnicaDetalheResponse>? {
         val service = RetrofitProvider.getRetrofit().create(TecnicaService::class.java)
         return try {
-            service.getHistoricoTecnica(request)
+            service.getHistoricoTecnica(request.userId, request.techniqueId)
         } catch (e: Exception) {
             Log.e("ApiTecnicaController", "Erro ao buscar técnica: ${e.message}", e)
             null
