@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cuidartrite.constants.ConstantsExtra.Companion.EXTRA_TECHINIQUE_TYPE_ID
 import com.example.cuidartrite.databinding.ActivityExerciseListBinding
 import com.example.cuidartrite.enums.TechiniqueType
@@ -24,6 +25,7 @@ class ExerciseListActivity : AppCompatActivity() {
         binding = ActivityExerciseListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.rvTechiniqueList.layoutManager = LinearLayoutManager(this)
         val techiniqueType = intent.getSerializableExtra(EXTRA_TECHINIQUE_TYPE_ID) as TechiniqueType
 
         binding.tvTitle.text = techiniqueType.title

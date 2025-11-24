@@ -17,7 +17,7 @@ class ExerciseListAdapter(
         fun bind(item: TecnicaDetalheResponse) {
             binding.tvBreathingTechniques.text = item.titulo
             binding.tvBenefitsTime.text = item.beneficios
-            binding.tvDurationTime.text = "${item.quantoTempo} minutos"
+            binding.tvDurationTime.text = item.quantoTempo
 
             binding.cvBreathingTechniques.setOnClickListener {
                 onItemClick(item)
