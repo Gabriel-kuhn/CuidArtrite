@@ -23,7 +23,8 @@
         android:layout_marginTop="16dp"
         android:paddingHorizontal="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle">
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        tools:listitem="@layout/item_techinique_resume">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -33,9 +34,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:gravity="center"
-        android:visibility="gone"
         android:text="Lista de Exercícios Vazia"
         android:textSize="@dimen/base_text_extra_large"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
