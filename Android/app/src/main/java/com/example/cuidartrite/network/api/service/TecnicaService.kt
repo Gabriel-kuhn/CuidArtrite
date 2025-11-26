@@ -40,12 +40,10 @@ interface TecnicaService {
         @Body request: RegistrarAtividadeRequest
     ): TecnicaDetalheResponse
 
-
-
-    @GET("historico-tecnica")
+    @Headers("Content-Type: application/json", "Accept: application/json")
+    @GET("historico-tecnica/{user_id}/{technique_id}")
     suspend fun getHistoricoTecnica(
-        @Query("user_id") userId: Int,
-        @Query("technique_id") techniqueId: Int
+        @Path("user_id") userId: Int,
+        @Path("technique_id") techniqueId: Int
     ): List<HistoricoTecnicaDetalheResponse>
-
 }

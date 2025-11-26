@@ -53,8 +53,6 @@ class ApiTecnicaController {
         }
     }
 
-
-
     suspend fun getHistoricoTecnica(request: HistoricoTecnicaDetalheRequest): List<HistoricoTecnicaDetalheResponse>? {
         val service = RetrofitProvider.getRetrofit().create(TecnicaService::class.java)
         return try {

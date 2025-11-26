@@ -3,6 +3,7 @@ package com.example.cuidartrite.view.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cuidartrite.R
 import com.example.cuidartrite.databinding.ProgressHistoryItemBinding
 import com.example.cuidartrite.network.models.HistoricoTecnicaDetalheResponse
 
@@ -29,7 +30,14 @@ class ProgressHistoryAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items[position])
+        val context = holder.binding.root.context
+        val color = if (position % 2 == 0)
+            context.getColor(R.color.white)
+        else
+            context.getColor(R.color.grey)
+
+        holder.binding.root.setBackgroundColor(color)
+
     }
 
     override fun getItemCount() = items.size
