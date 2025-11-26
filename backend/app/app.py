@@ -10,7 +10,7 @@ app = Flask(__name__)
 conn = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="",
+    password="your_password",
     database="dbCuidArtrite"
 )
 
@@ -334,7 +334,70 @@ def get_technique_history(id):
             json.dumps({"error": f"Erro interno no servidor: {str(e)}"}, ensure_ascii=False),
             content_type="application/json; charset=utf-8"
         ), 500
-    
+
+@app.route("/download-pains", methods=["GET"])
+def download_pains():
+    try:
+        cursor = conn.cursor(dictionary=True)
+
+        # select users
+        query = "SELECT * FROM users"
+        cursor.execute(query)
+        users = cursor.fetchall()
+        
+        # for each user get pain assessment
+        for user in users:
+            query = "SELECT * FROM pain_assessment WHERE user_id = %s ORDER BY date DESC"
+            cursor.execute(query, (user["id"],))
+            pains = cursor.fetchall()
+            user["pains"] = pains
+        
+        # for each user get technique history
+        for user in users:
+            # join with technique
+            query = """
+            SELECT th.id, th.date, th.initial_pain_scale, th.final_pain_scale, th.sensation_description, t.title
+            FROM technique_history AS th
+            INNER JOIN technique AS t
+            ON th.technique_id = t.id
+            WHERE th.user_id = %s
+            ORDER BY th.date DESC
+            """
+            cursor.execute(query, (user["id"],))
+            techniques = cursor.fetchall()
+            user["techniques"] = techniques
+        
+        cursor.close()
+
+        # now return this as csv blob like this
+        # name, gender, age
+        # list of pains
+        # list of techniques
+
+        output = ""
+        for user in users:
+            output += "Nome,Sexo,Idade\n"
+            output += f"{user['name']},{user['gender']},{user['age']}\n"
+            output += "Avaliação de Dor\n"
+            output += "Data,Nível de Dor, Localização\n"
+            for pain in user["pains"]:
+                output += f"{pain['date'].strftime('%Y-%m-%d')},{pain['pain_scale']},{pain['localized_pain']}\n"
+            output += "Histórico de Técnicas\n"
+            output += "Data,Nível de Dor Antes,Nível de Dor Depois,Sensação,Título da Técnica\n"
+            for technique in user["techniques"]:
+                output += f"{technique['date'].strftime('%Y-%m-%d')},{technique['initial_pain_scale']},{technique['final_pain_scale']},{technique['sensation_description']},{technique['title']}\n"
+
+        return Response(
+            output,
+            content_type="text/csv; charset=utf-8; header=present"
+        ), 200
+
+    except Exception as e:
+        return Response(
+            json.dumps({"error": f"Erro interno no servidor: {str(e)}"}, ensure_ascii=False),
+            content_type="application/json; charset=utf-8"
+        ), 500
+
 @app.route("/historico-tecnica/<int:user_id>/<int:technique_id>", methods=["GET"])
 def get_specific_technique_history(user_id, technique_id):
     try:
