@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TOQUE CALMANTE"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_gravity="center" />
+
+        <!-- Data -->
+        <TextView
+            android:id="@+id/tvData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="06 NOV 2025"
+            android:textSize="14sp"
+            android:textColor="#777"
+            android:layout_marginTop="4dp"
+            android:layout_gravity="center" />
+
+        <!-- Slider Antes -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nível de dor antes:"
+            android:layout_marginTop="25dp" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sliderAntes"
+            android:clickable="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:valueFrom="0"
+            android:valueTo="10"
+            android:stepSize="1"
+            app:haloRadius="16dp"
+            app:thumbRadius="12dp"
+            app:trackThickness="6dp"
+            app:labelBehavior="gone" />
+
+        <!-- Slider Depois -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nível de dor depois:"
+            android:layout_marginTop="16dp" />
+
+        <!-- Slider do nível de dor -->
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sliderDepois"
+            android:clickable="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:valueFrom="0"
+            android:valueTo="10"
+            android:stepSize="1"
+            app:haloRadius="16dp"
+            app:thumbRadius="12dp"
+            app:trackThickness="6dp"
+            app:labelBehavior="gone" />
+
+        <!-- Sensação -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sensação:"
+            android:layout_marginTop="24dp" />
+
+        <TextView
+            android:id="@+id/tvSensacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F5F5F5"
+            android:padding="12dp"
+            android:text="O calor das mãos ajudou muito."
+            android:textSize="16sp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="20dp"
+            android:minHeight="80dp" />
+
+    </LinearLayout>
+
+</ScrollView>

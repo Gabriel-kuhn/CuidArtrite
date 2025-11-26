@@ -1,7 +1,10 @@
 package com.example.cuidartrite.network.models
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class HistoricoTecnicaDetalheResponse(
     val id: Int,
     @SerializedName("titulo_tecnica")
@@ -12,4 +15,4 @@ data class HistoricoTecnicaDetalheResponse(
     @SerializedName("nivel_dor_depois")
     val nivelDorDepois: Int,
     val sensacao: String
-)
+) : Parcelable

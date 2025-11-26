@@ -1,10 +1,12 @@
 package com.example.cuidartrite.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.cuidartrite.constants.ConstantsExtra.Companion.EXTRA_DAIRY
 import com.example.cuidartrite.constants.ConstantsExtra.Companion.EXTRA_EXERCISE
 import com.example.cuidartrite.constants.ConstantsExtra.Companion.EXTRA_USER
 import com.example.cuidartrite.databinding.ActivityProgressAndSensationDiaryBinding
@@ -70,7 +72,11 @@ class ProgressSensationDetailActivity : AppCompatActivity() {
 
                 Log.d("ProgressSensationDetailActivity", response.toString())
 
-                val adapter = ProgressHistoryAdapter(response)
+                val adapter = ProgressHistoryAdapter(response) { item ->
+                    val intent = Intent(this@ProgressSensationDetailActivity, DiarioDetalheActivity::class.java)
+                    intent.putExtra(EXTRA_DAIRY, item)
+                    startActivity(intent)
+                }
                 binding.recyclerTabela.layoutManager = LinearLayoutManager(this@ProgressSensationDetailActivity)
                 binding.recyclerTabela.adapter = adapter
 
