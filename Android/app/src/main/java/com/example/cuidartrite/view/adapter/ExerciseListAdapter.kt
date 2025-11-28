@@ -3,6 +3,8 @@ package com.example.cuidartrite.view.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.cuidartrite.R
 import com.example.cuidartrite.databinding.ItemTechiniqueResumeBinding
 import com.example.cuidartrite.network.models.TecnicaDetalheResponse
 
@@ -11,13 +13,23 @@ class ExerciseListAdapter(
     private val onItemClick: (TecnicaDetalheResponse) -> Unit
 ) : RecyclerView.Adapter<ExerciseListAdapter.ViewHolder>() {
 
-    inner class ViewHolder(val binding: ItemTechiniqueResumeBinding)
-        : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(val binding: ItemTechiniqueResumeBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: TecnicaDetalheResponse) {
             binding.tvBreathingTechniques.text = item.titulo
             binding.tvBenefitsTime.text = item.beneficios
             binding.tvDurationTime.text = item.quantoTempo
+
+            // Carrega a thumbnail
+            val videoId = item.videoUrl // suposição: você adiciona isso ao modelo
+            val thumbnailUrl = "https://img.youtube.com/vi/$videoId/hqdefault.jpg"
+
+            Glide.with(binding.root.context)
+                .load(thumbnailUrl)
+                .placeholder(R.drawable.ic_stretching) // enquanto carrega
+                .centerCrop()
+                .into(binding.ivThumbnail) // substitua pelo id real do ImageView
 
             binding.cvBreathingTechniques.setOnClickListener {
                 onItemClick(item)
