@@ -3,28 +3,38 @@ package com.example.cuidartrite.view
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import android.widget.Toast
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.lifecycle.lifecycleScope
 import com.example.cuidartrite.R
 import com.example.cuidartrite.constants.ConstantsExtra.Companion.EXTRA_EXERCISE
 import com.example.cuidartrite.constants.ConstantsExtra.Companion.EXTRA_USER
 import com.example.cuidartrite.databinding.ActivityPracticingTechiniqueBinding
 import com.example.cuidartrite.databinding.BottomsheetDorInicialBinding
 import com.example.cuidartrite.databinding.BottomsheetFinalizarPraticaBinding
+import com.example.cuidartrite.network.api.controller.ApiTecnicaController
+import com.example.cuidartrite.network.models.RegistrarAtividadeRequest
 import com.example.cuidartrite.network.models.TecnicaDetalheResponse
 import com.example.cuidartrite.network.models.User
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+import es.dmoral.toasty.Toasty
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class PracticingTechiniqueActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPracticingTechiniqueBinding
     private lateinit var user: User
     private lateinit var exercise: TecnicaDetalheResponse
+    private lateinit var youtubePlayerView: YouTubePlayerView
 
     private var nivelDorAntes: Int? = null
     private var nivelDorDepois: Int? = null
-    private var sensacao: String? = null
+    private lateinit var sensacao: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +43,8 @@ class PracticingTechiniqueActivity : AppCompatActivity() {
 
         user = intent.getParcelableExtra(EXTRA_USER)!!
         exercise = intent.getParcelableExtra(EXTRA_EXERCISE)!!
+
+        Log.d("PracticingTechiniqueActivity", "exercise: $exercise  user: $user")
 
         binding.tvBeneficios.text = exercise.beneficios
         binding.tvComoFazer.text = exercise.comoFazer
@@ -46,6 +58,22 @@ class PracticingTechiniqueActivity : AppCompatActivity() {
             else
                 abrirBottomSheetFinalizar()
         }
+
+        setupYouTubePlayer()
+    }
+
+    private fun setupYouTubePlayer() {
+        youtubePlayerView = binding.youtubePlayerView
+        lifecycle.addObserver(youtubePlayerView)
+
+        youtubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                val videoId = exercise.videoUrl!!
+
+                //youTubePlayer.loadVideo(videoId, 0f)
+                youTubePlayer.cueVideo(videoId, 0f)
+            }
+        })
     }
 
     private fun abrirBottomSheetDorInicial() {
@@ -90,10 +118,26 @@ class PracticingTechiniqueActivity : AppCompatActivity() {
     }
 
     private fun enviarRegistroParaBackend() {
+        val request = RegistrarAtividadeRequest(
+            user.id!!,
+            exercise.id,
+            nivelDorAntes ?: 0,
+            nivelDorDepois ?: 0,
+            sensacao
+        )
 
-        
-        Toast.makeText(this, "Prática registrada com sucesso!", Toast.LENGTH_LONG).show()
+        lifecycleScope.launch {
+            ApiTecnicaController().registrarAtividade(request)
 
+            Toasty.success(
+                this@PracticingTechiniqueActivity,
+                "Prática registrada com sucesso!",
+                Toasty.LENGTH_LONG,
+                true
+            ).show()
+
+            delay(1000)
+        }
         finish()
     }
 }

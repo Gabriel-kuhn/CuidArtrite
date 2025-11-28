@@ -34,9 +34,8 @@ interface TecnicaService {
     ): List<TecnicaResumidaDetalheRespose>
 
     @Headers("Content-Type: application/json", "Accept: application/json")
-    @POST("tecnica/{id}/registrar-atividade")
+    @POST("registra-atividade")
     suspend fun registrarAtividade(
-        @Path("id") id: Int,
         @Body request: RegistrarAtividadeRequest
     ): TecnicaDetalheResponse
 

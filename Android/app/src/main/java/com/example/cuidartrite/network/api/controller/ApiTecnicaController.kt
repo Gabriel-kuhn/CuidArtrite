@@ -46,7 +46,7 @@ class ApiTecnicaController {
     suspend fun registrarAtividade(request: RegistrarAtividadeRequest): TecnicaDetalheResponse? {
         val service = RetrofitProvider.getRetrofit().create(TecnicaService::class.java)
         return try {
-            service.registrarAtividade(request.tecnica_id, request)
+            service.registrarAtividade( request)
         } catch (e: Exception) {
             Log.e("ApiTecnicaAtividade", "Erro ao registrar atividade: ${e.message}", e)
             null

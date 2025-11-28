@@ -29,24 +29,23 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Respiração Profunda" />
 
-        <!-- CARD DECORATIVO DO VÍDEO -->
+        <!-- CARD DO VÍDEO DO YOUTUBE -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardVideo"
             android:layout_width="0dp"
             android:layout_height="220dp"
-            android:layout_marginTop="12dp"
             app:cardCornerRadius="18dp"
             app:cardElevation="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTitle">
 
-            <ImageView
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:id="@+id/youtube_player_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_arrow" />
+                android:layout_height="match_parent"/>
         </com.google.android.material.card.MaterialCardView>
+
 
 
         <!-- BENEFÍCIOS -->
