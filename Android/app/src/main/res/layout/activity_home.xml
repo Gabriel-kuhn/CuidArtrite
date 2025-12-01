@@ -172,6 +172,33 @@
                         android:textSize="14sp" />
                 </LinearLayout>
 
+                <!-- Exportar Dados -->
+                <LinearLayout
+                    android:id="@+id/btnExportData"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/btn_round_selector"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:src="@drawable/ic_up_load"
+                        app:tint="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Exportar Dados"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
             </androidx.gridlayout.widget.GridLayout>
         </LinearLayout>
     </ScrollView>
