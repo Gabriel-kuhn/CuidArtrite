@@ -36,7 +36,7 @@ class ProgressSensationAdapter(
                 root.setBackgroundColor(ContextCompat.getColor(context, backgroundColor))
                 tvNome.text = item.titulo
                 tvVezes.text = item.vezesPraticada.toString()
-                tvUltimaVez.text = item.ultimaVezPraticada
+                tvUltimaVez.text = formatarDataHora(item.ultimaVezPraticada)
 
                 btnDetalhes.setOnClickListener { onVerMaisClick(item) }
             }
@@ -51,4 +51,17 @@ class ProgressSensationAdapter(
         else
             R.color.grey
     }
+
+    private fun formatarDataHora(isoString: String): String {
+        return try {
+            val inputFormat = java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss", java.util.Locale.getDefault())
+            val data = inputFormat.parse(isoString)
+
+            val outputFormat = java.text.SimpleDateFormat("dd/MM/yyyy HH:mm", java.util.Locale.getDefault())
+            outputFormat.format(data!!)
+        } catch (e: Exception) {
+            isoString
+        }
+    }
+
 }
