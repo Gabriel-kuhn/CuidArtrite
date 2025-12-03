@@ -20,16 +20,15 @@ class ExerciseListAdapter(
             binding.tvBreathingTechniques.text = item.titulo
             binding.tvBenefitsTime.text = item.beneficios
             binding.tvDurationTime.text = item.quantoTempo
-
-            // Carrega a thumbnail
-            val videoId = item.videoUrl // suposição: você adiciona isso ao modelo
+            
+            val videoId = item.videoUrl
             val thumbnailUrl = "https://img.youtube.com/vi/$videoId/hqdefault.jpg"
 
             Glide.with(binding.root.context)
                 .load(thumbnailUrl)
-                .placeholder(R.drawable.ic_stretching) // enquanto carrega
+                .placeholder(R.drawable.ic_stretching)
                 .centerCrop()
-                .into(binding.ivThumbnail) // substitua pelo id real do ImageView
+                .into(binding.ivThumbnail)
 
             binding.cvBreathingTechniques.setOnClickListener {
                 onItemClick(item)

@@ -71,7 +71,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.btnExportData.setOnClickListener {
-            exportPainData()
+            askPasswordAndExport()
         }
 
         binding.fabLogout.setOnClickListener { v: View? ->
@@ -82,12 +82,41 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    private fun askPasswordAndExport() {
+        val input = android.widget.EditText(this).apply {
+            hint = "Digite a senha"
+            inputType = android.text.InputType.TYPE_CLASS_TEXT or
+                    android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
+            setPadding(40, 40, 40, 40)
+        }
+
+        AlertDialog.Builder(this)
+            .setTitle("Confirmação")
+            .setMessage("Digite a senha para exportar os dados:")
+            .setView(input)
+            .setPositiveButton("Confirmar") { dialog, _ ->
+                val typedPassword = input.text.toString()
+
+
+                if (typedPassword == "6765") {
+                    exportPainData()
+                } else {
+                    Toasty.error(this, "Senha incorreta", Toasty.LENGTH_SHORT, true).show()
+                }
+                dialog.dismiss()
+            }
+            .setNegativeButton("Cancelar") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setCancelable(false)
+            .show()
+    }
+
+
     private fun exportPainData() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            // Android 10+ doesn't need storage permission for app-specific directories
             downloadAndSaveData()
         } else {
-            // For Android 9 and below, check permission
             if (ContextCompat.checkSelfPermission(
                     this,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -160,7 +189,6 @@ class HomeActivity : AppCompatActivity() {
             val fileName = "CuidArtrite_Dores_$timestamp.csv"
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                // Android 10+ - Use MediaStore
                 val contentValues = ContentValues().apply {
                     put(MediaStore.MediaColumns.DISPLAY_NAME, fileName)
                     put(MediaStore.MediaColumns.MIME_TYPE, "text/csv")
@@ -186,7 +214,6 @@ class HomeActivity : AppCompatActivity() {
                     ).show()
                 }
             } else {
-                // Android 9 and below - Use traditional file system
                 val downloadsDir =
                     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
                 val file = File(downloadsDir, fileName)
@@ -240,11 +267,9 @@ class HomeActivity : AppCompatActivity() {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             }
 
-            // Check if there's an app that can handle CSV files
             if (intent.resolveActivity(packageManager) != null) {
                 startActivity(intent)
             } else {
-                // If no CSV viewer, try with generic text viewer
                 val genericIntent = Intent(Intent.ACTION_VIEW).apply {
                     setDataAndType(uri, "text/*")
                     addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
@@ -254,7 +279,6 @@ class HomeActivity : AppCompatActivity() {
                 if (genericIntent.resolveActivity(packageManager) != null) {
                     startActivity(genericIntent)
                 } else {
-                    // Show chooser as last resort
                     startActivity(Intent.createChooser(intent, "Abrir arquivo CSV"))
                 }
             }
