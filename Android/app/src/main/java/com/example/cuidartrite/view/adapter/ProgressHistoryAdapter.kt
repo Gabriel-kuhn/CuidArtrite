@@ -16,7 +16,19 @@ class ProgressHistoryAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: HistoricoTecnicaDetalheResponse) {
-            binding.tvUltimaVez.text = item.data ?: "--"
+            binding.tvUltimaVez.text = formatarDataHora(item.data)
+        }
+
+        private fun formatarDataHora(isoString: String): String {
+            return try {
+                val inputFormat = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
+                val data = inputFormat.parse(isoString)
+
+                val outputFormat = java.text.SimpleDateFormat("dd/MM/yyyy", java.util.Locale.getDefault())
+                outputFormat.format(data!!)
+            } catch (e: Exception) {
+                isoString
+            }
         }
     }
 
