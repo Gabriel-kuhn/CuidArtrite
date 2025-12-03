@@ -10,6 +10,7 @@ import android.content.Intent
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import com.example.cuidartrite.MainActivity
 import com.example.cuidartrite.R
 import java.util.Calendar
 
@@ -26,7 +27,6 @@ class ExerciseNotificationReceiver : BroadcastReceiver() {
         val channelId = "exercise_reminders"
         val channelName = "Lembretes de Exercícios"
 
-        // Create notification channel for Android O and above
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 channelId,
@@ -39,8 +39,7 @@ class ExerciseNotificationReceiver : BroadcastReceiver() {
             notificationManager.createNotificationChannel(channel)
         }
 
-        // Create intent to open the app when notification is clicked
-        val notificationIntent = Intent(context, AgendaActivity::class.java)
+        val notificationIntent = Intent(context, MainActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(
             context,
             0,
@@ -48,7 +47,6 @@ class ExerciseNotificationReceiver : BroadcastReceiver() {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        // Build the notification
         val notification = NotificationCompat.Builder(context, channelId)
             .setContentTitle("Hora dos Exercícios!")
             .setContentText("Não se esqueça de fazer seus exercícios diários para cuidar da sua artrite.")
@@ -62,7 +60,6 @@ class ExerciseNotificationReceiver : BroadcastReceiver() {
     }
 
     private fun rescheduleNextAlarm(context: Context) {
-        // Get saved preferences
         val sharedPreferences = context.getSharedPreferences("AgendaPrefs", Context.MODE_PRIVATE)
         val notificationsEnabled = sharedPreferences.getBoolean("notifications_enabled", false)
 
@@ -74,7 +71,6 @@ class ExerciseNotificationReceiver : BroadcastReceiver() {
         val hour24 = sharedPreferences.getInt("notification_hour", 7)
         val minute = sharedPreferences.getInt("notification_minute", 0)
 
-        // Schedule for tomorrow at the same time
         val calendar = Calendar.getInstance().apply {
             set(Calendar.HOUR_OF_DAY, hour24)
             set(Calendar.MINUTE, minute)
@@ -93,7 +89,6 @@ class ExerciseNotificationReceiver : BroadcastReceiver() {
 
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                // Android 12+ - Use setAlarmClock for highest priority
                 val alarmClockInfo = AlarmManager.AlarmClockInfo(
                     calendar.timeInMillis,
                     pendingIntent
