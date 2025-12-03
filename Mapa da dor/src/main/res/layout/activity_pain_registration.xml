@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pain_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".view.AddPainAssessmentActivity">
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,30 +11,20 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <!-- Título -->
-        <TextView
-            android:id="@+id/tvTitulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="Registrar Nível de Dor"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-
-        <!-- Label de seleção de articulação -->
         <TextView
             android:id="@+id/jointLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Selecione uma articulação"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:layout_marginBottom="12dp"/>
 
         <!-- MAPA CORPORAL COM PONTOS CLICÁVEIS -->
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_marginBottom="16dp">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="0dp">
 
             <ImageView
                 android:id="@+id/bodyImage"
@@ -54,7 +42,7 @@
                 android:layout_height="15dp"
                 android:src="@drawable/joint_dot"
                 android:layout_marginStart="147dp"
-                android:layout_marginTop="75dp"
+                android:layout_marginTop="12dp"
                 android:layout_gravity="top|start"
                 android:tag="Ombro Esquerdo"
                 android:contentDescription="Ombro esquerdo"/>
@@ -65,7 +53,7 @@
                 android:layout_height="15dp"
                 android:src="@drawable/joint_dot"
                 android:layout_marginStart="210dp"
-                android:layout_marginTop="75dp"
+                android:layout_marginTop="12dp"
                 android:layout_gravity="top|start"
                 android:tag="Ombro Direito"
                 android:contentDescription="Ombro direito"/>
@@ -77,54 +65,53 @@
                 android:layout_height="15dp"
                 android:src="@drawable/joint_dot"
                 android:layout_marginStart="105dp"
-                android:layout_marginTop="75dp"
+                android:layout_marginTop="13dp"
                 android:layout_gravity="top|start"
                 android:tag="Cotovelo Esquerdo"
                 android:contentDescription="Cotovelo esquerdo"/>
-
-            <!-- Pulsos -->
 
             <ImageView
                 android:id="@+id/jointElbowRight"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:layout_gravity="top|start"
-                android:layout_marginStart="258dp"
-                android:layout_marginTop="75dp"
-                android:contentDescription="Cotovelo direito"
                 android:src="@drawable/joint_dot"
-                android:tag="Cotovelo Direito" />
+                android:layout_marginStart="258dp"
+                android:layout_marginTop="13dp"
+                android:layout_gravity="top|start"
+                android:tag="Cotovelo Direito"
+                android:contentDescription="Cotovelo direito"/>
 
+            <!-- Pulsos -->
             <ImageView
                 android:id="@+id/jointWristLeft"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:src="@drawable/joint_dot"
                 android:layout_marginStart="60dp"
-                android:layout_marginTop="75dp"
+                android:layout_marginTop="13dp"
                 android:layout_gravity="top|start"
                 android:tag="Pulso Esquerdo"
                 android:contentDescription="Pulso esquerdo"/>
 
-            <!-- Quadris -->
             <ImageView
                 android:id="@+id/jointWristRight"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:layout_gravity="top|start"
-                android:layout_marginStart="300dp"
-                android:layout_marginTop="75dp"
-                android:contentDescription="Pulso direito"
                 android:src="@drawable/joint_dot"
-                android:tag="Pulso Direito" />
+                android:layout_marginStart="300dp"
+                android:layout_marginTop="13dp"
+                android:layout_gravity="top|start"
+                android:tag="Pulso Direito"
+                android:contentDescription="Pulso direito"/>
 
+            <!-- Quadris -->
             <ImageView
                 android:id="@+id/jointHipLeft"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:src="@drawable/joint_dot"
                 android:layout_marginStart="160dp"
-                android:layout_marginTop="170dp"
+                android:layout_marginTop="110dp"
                 android:layout_gravity="top|start"
                 android:tag="Quadril Esquerdo"
                 android:contentDescription="Quadril esquerdo"/>
@@ -135,7 +122,7 @@
                 android:layout_height="15dp"
                 android:src="@drawable/joint_dot"
                 android:layout_marginStart="203dp"
-                android:layout_marginTop="170dp"
+                android:layout_marginTop="110dp"
                 android:layout_gravity="top|start"
                 android:tag="Quadril Direito"
                 android:contentDescription="Quadril direito"/>
@@ -145,12 +132,12 @@
                 android:id="@+id/jointKneeLeft"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:layout_gravity="top|start"
-                android:layout_marginStart="160dp"
-                android:layout_marginTop="245dp"
-                android:contentDescription="Joelho esquerdo"
                 android:src="@drawable/joint_dot"
-                android:tag="Joelho Esquerdo" />
+                android:layout_marginStart="160dp"
+                android:layout_marginTop="185dp"
+                android:layout_gravity="top|start"
+                android:tag="Joelho Esquerdo"
+                android:contentDescription="Joelho esquerdo"/>
 
             <ImageView
                 android:id="@+id/jointKneeRight"
@@ -158,7 +145,7 @@
                 android:layout_height="15dp"
                 android:src="@drawable/joint_dot"
                 android:layout_marginStart="200dp"
-                android:layout_marginTop="245dp"
+                android:layout_marginTop="185dp"
                 android:layout_gravity="top|start"
                 android:tag="Joelho Direito"
                 android:contentDescription="Joelho direito"/>
@@ -170,7 +157,7 @@
                 android:layout_height="15dp"
                 android:src="@drawable/joint_dot"
                 android:layout_marginStart="160dp"
-                android:layout_marginTop="305dp"
+                android:layout_marginTop="245dp"
                 android:layout_gravity="top|start"
                 android:tag="Tornozelo Esquerdo"
                 android:contentDescription="Tornozelo esquerdo"/>
@@ -181,7 +168,7 @@
                 android:layout_height="15dp"
                 android:src="@drawable/joint_dot"
                 android:layout_marginStart="205dp"
-                android:layout_marginTop="305dp"
+                android:layout_marginTop="245dp"
                 android:layout_gravity="top|start"
                 android:tag="Tornozelo Direito"
                 android:contentDescription="Tornozelo direito"/>
@@ -191,58 +178,36 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nível da dor (0 a 10)"
-            android:textSize="16sp"
-            android:layout_marginBottom="8dp"/>
+            android:text="Nível da dor (0 a 10)"/>
 
-        <!-- Slider do nível de dor -->
-        <com.google.android.material.slider.Slider
-            android:id="@+id/sliderNivelDor"
-            android:layout_width="match_parent"
+        <SeekBar
+            android:id="@+id/seekPain"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:stepSize="1"
-            android:valueFrom="0"
-            android:valueTo="10"
-            app:labelBehavior="gone" />
+            android:max="10" />
 
-        <!-- Exibição do valor atual -->
+
         <TextView
-            android:id="@+id/tvValorDor"
+            android:id="@+id/txtPainValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="Nível atual: 0"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:text="0"
+            android:textSize="20sp"
+            android:layout_marginBottom="20dp"/>
 
-        <!-- Descrição do nível de dor -->
-        <TextView
-            android:id="@+id/tvDescricaoDor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="Sem dor."
-            android:textAlignment="center"
-            android:textSize="14sp" />
-
-        <!-- Campo de comentário opcional -->
         <EditText
             android:id="@+id/commentField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Comentário opcional"
             android:inputType="textMultiLine"
-            android:minLines="2"
-            android:layout_marginBottom="16dp"/>
+            android:minLines="2"/>
 
-        <!-- Botão de registro -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnRegistrarDor"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingVertical="12dp"
-            android:text="Registrar Dor" />
+            android:text="Enviar"/>
 
     </LinearLayout>
 </ScrollView>
