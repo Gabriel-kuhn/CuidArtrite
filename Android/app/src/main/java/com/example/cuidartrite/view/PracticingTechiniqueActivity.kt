@@ -48,7 +48,7 @@ class PracticingTechiniqueActivity : AppCompatActivity() {
 
         binding.tvBeneficios.text = exercise.beneficios
         binding.tvComoFazer.text = exercise.comoFazer
-        binding.tvDica.text = exercise.dica
+        binding.tvDica.text = exercise.dica ?: ""
         binding.tvTitle.text = exercise.titulo
 
         binding.btnStartFinish.text = "Iniciar prática"

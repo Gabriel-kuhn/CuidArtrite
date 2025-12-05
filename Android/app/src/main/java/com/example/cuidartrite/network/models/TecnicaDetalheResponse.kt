@@ -13,7 +13,7 @@ data class TecnicaDetalheResponse(
     val videoUrl: String?,
     @SerializedName("como_fazer")
     val comoFazer: String,
-    val dica: String,
+    val dica: String?,
     @SerializedName("quanto_tempo")
     val quantoTempo: String,
     @SerializedName("tipo_tecnica")

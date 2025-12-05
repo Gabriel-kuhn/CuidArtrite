@@ -1,5 +1,6 @@
 package com.example.cuidartrite.view.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -20,15 +21,20 @@ class ExerciseListAdapter(
             binding.tvBreathingTechniques.text = item.titulo
             binding.tvBenefitsTime.text = item.beneficios
             binding.tvDurationTime.text = item.quantoTempo
-            
-            val videoId = item.videoUrl
-            val thumbnailUrl = "https://img.youtube.com/vi/$videoId/hqdefault.jpg"
 
-            Glide.with(binding.root.context)
-                .load(thumbnailUrl)
-                .placeholder(R.drawable.ic_stretching)
-                .centerCrop()
-                .into(binding.ivThumbnail)
+            try {
+                val videoId = item.videoUrl
+                val thumbnailUrl = "https://img.youtube.com/vi/$videoId/hqdefault.jpg"
+
+                Glide.with(binding.root.context)
+                    .load(thumbnailUrl)
+                    .placeholder(R.drawable.ic_stretching)
+                    .centerCrop()
+                    .into(binding.ivThumbnail)
+
+            } catch (e: Exception) {
+                Log.e("ThumbnailUrl", e.toString())
+            }
 
             binding.cvBreathingTechniques.setOnClickListener {
                 onItemClick(item)

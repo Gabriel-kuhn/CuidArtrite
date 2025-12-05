@@ -61,7 +61,7 @@ class AddPainAssessmentActivity : AppCompatActivity() {
             selectedJoints.remove(joint)
         } else {
             // Select
-            joint.setColorFilter(Color.parseColor("#4CAF50"), PorterDuff.Mode.SRC_ATOP)
+            joint.setColorFilter(Color.parseColor("#FF0000"), PorterDuff.Mode.SRC_ATOP)
             selectedJoints.add(joint)
         }
 
